@@ -1,0 +1,70 @@
+{
+  "slideImg": [
+    {
+      "index": "1",
+      "link": "https://mp-seoul-image-production-s3.mangoplate.com/390558/bsnepvq95_torc.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+    },
+    {
+      "index": "2",
+      "link": "https://mp-seoul-image-production-s3.mangoplate.com/747788_1578225175902490.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+    },
+    {
+      "index": "3",
+      "link": "https://mp-seoul-image-production-s3.mangoplate.com/747788_1578225177733426.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+    },
+    {
+      "index": "4",
+      "link": "https://mp-seoul-image-production-s3.mangoplate.com/747788_1578225178219728.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+    },
+    {
+      "index": "5",
+      "link": "https://mp-seoul-image-production-s3.mangoplate.com/290723_1578059600724525.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+    }
+  ],
+  "rstData": {
+    "name": "홈보이서울",
+    "rate": "4.6",
+    "reviewWriter": "로미♥",
+    "writerImg": "http://mud-kage.kakao.co.kr/14/dn/btqb6WexP14/XPip6MMw5HadGQLg0QiIaK/o.jpg?fit=around|56:56&crop=56:56;*,*&output-format=jpg&output-quality=80",
+    "text": "단단면은 탄탄면의 볶음버젼인데 재료들의 조화가 좋아서 넘 맛나게 먹었다. 튀긴고기는 처음 먹어보는 음식이라 특이했지만 인상깊은 맛은 아니었고 좀 질리는 맛이다. 대체적으로 간이 좀 짜서 맥주랑 같이 먹으면 좋을 것 같다.",
+    "date": "2019-12-31",
+    "view": "38155",
+    "reviewNum": "65",
+    "like": "1083"
+  },
+  "rstInfo": [
+    { "infoTitle": "주소", "infoContent": ["서울시 마포구 연남동 228-28"] },
+    { "infoTitle": "전화번호", "infoContent": ["02-6080-4371"] },
+    { "infoTitle": "음식 종류", "infoContent": ["퓨전 중식"] },
+    { "infoTitle": "가격대", "infoContent": ["만원-2만원"] },
+    {
+      "infoTitle": ["영업시간"],
+      "infoContent": ["화-목: 17:00 - 22:00, 금-토: 12:00 - 22:00"]
+    },
+    { "infoTitle": "쉬는시간", "infoContent": ["금-일: 15:00 ~ 17:00"] },
+    { "infoTitle": "마지막주문", "infoContent": ["21:30"] },
+    { "infoTitle": "휴일", "infoContent": ["일,월"] },
+    { "infoTitle": "주차", "infoContent": ["주차공간없음"] },
+    {
+      "infoTitle": "메뉴",
+      "infoContent": [
+        {
+          "name": "통목살(150g)",
+          "price": "15,000원"
+        },
+        {
+          "name": "통삼겹살(150g)",
+          "price": "150,000원"
+        },
+        {
+          "name": "통삼겹(350g)",
+          "price": "15,300원"
+        }
+      ]
+    }
+  ],
+  "rstIntro": {
+    "intro": "식당소개",
+    "content": "어센틱과 대중성 사이의 위트있는 해석으로 흥미로운 중식을 지향하는 아메리칸 차이니즈 레스토랑"
+  }
+}
