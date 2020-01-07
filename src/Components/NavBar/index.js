@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Nav.scss";
+import "./index.scss";
 import { NavLink, Link } from "react-router-dom";
-import Modal from "./NavModal/Modal";
-import useModal from "./NavModal/useModal";
+import Modal from "../Nav/NavModal/Modal";
+import useModal from "../Nav/NavModal/useModal";
 
 function Index(props) {
   const { isShowing, toggle } = useModal();
