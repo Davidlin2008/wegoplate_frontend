@@ -10,20 +10,31 @@ function index(props) {
           <span></span>
         </NavLink>
       </h1>
-      <ul className="navbar_lists">
-        <li className="navbar_list">
-          <Link to="/eat_deal">EAT딜</Link>
-        </li>
-        <li className="navbar_list">
-          <Link to="/top_lists">맛집 리스트</Link>
-        </li>
-        <li className="navbar_list">
-          <Link to="/mango_picks">망고 스토리</Link>
-        </li>
-        <li className="navbar_list">
-          <span></span>
-        </li>
-      </ul>
+      <div className="ul_wrapper">
+        <ul className="navbar_lists">
+          <li className="navbar_list">
+            <Link to="/eat_deal">EAT딜</Link>
+          </li>
+          <li className="navbar_list">
+            <Link to="/top_lists">맛집 리스트</Link>
+          </li>
+          <li className="navbar_list">
+            <Link to="/mango_picks">망고 스토리</Link>
+          </li>
+        </ul>
+        <ul className="navbar_lists mobile">
+          <li>
+            <div className="hamburger">
+              {/* <div className={`hamburger ${this.state. ? 'active' : ''}`}> */}
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </li>
+        </ul>
+        <span className="human_icon"></span>
+      </div>
     </nav>
   );
 }
