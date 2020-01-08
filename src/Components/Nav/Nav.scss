@@ -50,17 +50,17 @@
           text-decoration: none;
         }
       }
-      span {
-        margin-right: 40px;
-        display: block;
-        background-image: url('../../Images/main-sprite.png');
-        background-position: -82px -919px;
-        width: 34px;
-        height: 34px;
-        background-repeat: no-repeat no-repeat;
-        cursor: pointer;
-      }
     }
+  }
+  span {
+    margin-right: 40px;
+    display: block;
+    background-image: url('../../Images/main-sprite.png');
+    background-position: -82px -919px;
+    width: 34px;
+    height: 34px;
+    background-repeat: no-repeat no-repeat;
+    cursor: pointer;
   }
 }
 
@@ -88,18 +88,19 @@
     }
 
     .human_icon {
-      background-image: url('../../Images/main-mobile.png');
-      background-position: -573px -430px;
+      background-image: url('../../Images/main-sprite.png');
+      background-position: -82px -919px;
       width: 34px;
       height: 33px;
       display: block;
+      cursor: pointer;
     }
   }
 }
 
 .hamburger {
-  width: 60px;
-  height: 45px;
+  height: 35px;
+  width: 25px;
   position: relative;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
