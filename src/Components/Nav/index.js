@@ -1,8 +1,11 @@
 import React from "react";
 import "./Nav.scss";
 import { NavLink, Link } from "react-router-dom";
+import Modal from "./NavModal/Modal";
+import useModal from "./NavModal/useModal";
 
-function index(props) {
+function Index(props) {
+  const { isShowing, toggle } = useModal();
   return (
     <nav className="nav">
       <h1 className="logo">
@@ -33,10 +36,11 @@ function index(props) {
             </div>
           </li>
         </ul>
-        <span className="human_icon"></span>
+        <span className="human_icon" onClick={toggle}></span>
+        <Modal isShowing={isShowing} hide={toggle} />
       </div>
     </nav>
   );
 }
 
-export default index;
+export default Index;

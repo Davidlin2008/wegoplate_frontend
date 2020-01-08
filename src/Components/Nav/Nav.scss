@@ -88,11 +88,12 @@ $orange: #f27104;
         height: 30px;
       }
     }
-    .hamburger_list {
-    }
+
     .human_icon {
-      background-image: url('../../Images/main-sprite.png');
-      background-position: -82px -919px;
+      background {
+        image: url('../../Images/main-sprite.png');
+        position: -82px -919px;
+      }
       width: 34px;
       height: 33px;
       display: block;
