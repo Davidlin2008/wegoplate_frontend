@@ -23,7 +23,7 @@ function index(props) {
           </li>
         </ul>
         <ul className="navbar_lists mobile">
-          <li>
+          <li className="hamburger_li">
             <div className="hamburger">
               {/* <div className={`hamburger ${this.state. ? 'active' : ''}`}> */}
               <span></span>
