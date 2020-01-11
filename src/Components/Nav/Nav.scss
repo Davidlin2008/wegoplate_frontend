@@ -87,6 +87,16 @@ $orange: #f27104;
         width: 30px;
         height: 30px;
       }
+      &.open {
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-color: orange;
+        top: 0;
+        left: 0;
+        z-index: 100;
+      }
     }
 
     .human_icon {
