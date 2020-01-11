@@ -1,6 +1,126 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import fetchData from "../../../Utils/Fetch";
+import KaKaoMap from "../../../Components/KakaoMap";
 import styled from "styled-components";
+import NearbyList from "../NearbyList";
+import EatDeal from "../EatDeal";
+import DetailReview from "../DetailReview";
+
+const DetailMain = () => {
+  const [rstData, setData] = useState("");
+  const [data, setList] = useState([]);
+  const [intro, setIntro] = useState("");
+  const [tagList, setTagList] = useState([]);
+  const child = useRef();
+
+  useEffect(() => {
+    fetchData("http://localhost:3000/Data/Data.json").then(data => {
+      setData(data.rstData);
+      setList(data.rstInfo);
+      setIntro(data.rstIntro);
+      setTagList(data.tagList);
+    });
+  }, []);
+
+  const infoList = data.map((el, index) => {
+    if (el.infoTitle !== "메뉴") {
+      return (
+        <div key={index}>
+          <SpanInfoTitle>{el.infoTitle}</SpanInfoTitle>
+          <SpanInfoDetail>{el.infoContent[0]}</SpanInfoDetail>
+        </div>
+      );
+    } else {
+      const menuList = data[data.length - 1].infoContent.map((el, index) => (
+        <DivMenu key={index}>
+          <SpanMenuName>{el.name}</SpanMenuName>
+          <span>{el.price}</span>
+        </DivMenu>
+      ));
+      return (
+        <DivFlex key={index}>
+          <SpanInfoTitle>메뉴</SpanInfoTitle>
+          <DivWrapper>{menuList}</DivWrapper>
+        </DivFlex>
+      );
+    }
+  });
+
+  const tagMapList = tagList.map((el, index) => {
+    return (
+      <DivTagWrapper key={index}>
+        <DivTagList>#{el}</DivTagList>
+      </DivTagWrapper>
+    );
+  });
+
+  if (data[0] === undefined) return <></>;
+
+  return (
+    <DivMainWrap>
+      <DivContent>
+        <SectionRstDetail>
+          <Header>
+            <DivRstTitle>
+              <DivHeaderLeft>
+                <span>{rstData.name}</span>
+                <SpanRate>{rstData.rate}</SpanRate>
+              </DivHeaderLeft>
+              <DivWrap>
+                <ButtonReview>
+                  <IWriteimg />
+                  <SpanReview>리뷰쓰기</SpanReview>
+                </ButtonReview>
+                <ButtonReview>
+                  <IWant />
+                  <SpanReview>가고싶다</SpanReview>
+                </ButtonReview>
+              </DivWrap>
+            </DivRstTitle>
+            <DivHeaderBot>
+              <SpanView left={-974} right={-817}>
+                {rstData.view}
+              </SpanView>
+              <SpanView left={-800} right={-648}>
+                {rstData.reviewNum}
+              </SpanView>
+              <SpanView left={-828} right={-774}>
+                {rstData.like}
+              </SpanView>
+            </DivHeaderBot>
+          </Header>
+          <DivInfoRst>{infoList}</DivInfoRst>
+        </SectionRstDetail>
+        <SectionIntro>
+          <DivRstIntro>
+            <SpanInfoTitle>{intro.intro}</SpanInfoTitle>
+            <SpanRstIntro>{intro.content}</SpanRstIntro>
+          </DivRstIntro>
+          <EatDeal />
+        </SectionIntro>
+        <DetailReview ref={child} />
+        <DivMoreReview onClick={() => child.current.moreOnClick()}>
+          <SpanMore>더보기</SpanMore>
+        </DivMoreReview>
+      </DivContent>
+      <DivSide>
+        <DivMapContainer>
+          <KaKaoMap width={400} height={328} address={data[0].infoContent} />
+        </DivMapContainer>
+        <DivRightBot>
+          <SpanRightTitle>주변 인기 식당</SpanRightTitle>
+          <NearbyList />
+          <SectionTag>
+            <SpanTagTitle>이 식당 관련된 태그</SpanTagTitle>
+            {tagMapList}
+          </SectionTag>
+        </DivRightBot>
+      </DivSide>
+    </DivMainWrap>
+  );
+};
+
+export default DetailMain;
 
 const DivMainWrap = styled.div`
   margin-top: 6px;
@@ -8,7 +128,7 @@ const DivMainWrap = styled.div`
 `;
 
 const DivContent = styled.div`
-  width: calc(100% - 400px);
+  width: 800px;
   padding: 0 20px;
   margin: 0 auto;
 `;
@@ -171,93 +291,86 @@ const DivRstIntro = styled.div`
 
 const SpanRstIntro = styled.span`
   font-size: 15px;
-  line-height: 25px;
+  line-height: 23px;
   text-align: left;
   color: #4f4f4f;
 `;
 
-const DetailMain = () => {
-  const [rstData, setData] = useState([]);
-  const [data, setList] = useState([]);
-  const [intro, setIntro] = useState("");
+const DivRightBot = styled.div`
+  padding: 30px 24px 0 24px;
+`;
 
-  useEffect(() => {
-    fetchData("http://localhost:3000/Data/Data.json").then(data => {
-      setData(data.rstData);
-      setList(data.rstInfo);
-      setIntro(data.rstIntro);
-    });
-  }, []);
+const SpanRightTitle = styled.span`
+  line-height: 1.2em;
+  color: #ff792a;
+  font-size: 1.438rem;
+`;
 
-  const infoList = data.map((el, index) => {
-    if (el.infoTitle !== "메뉴") {
-      return (
-        <div key={index}>
-          <SpanInfoTitle>{el.infoTitle}</SpanInfoTitle>
-          <SpanInfoDetail>{el.infoContent[0]}</SpanInfoDetail>
-        </div>
-      );
-    } else {
-      const menuList = data[data.length - 1].infoContent.map((el, index) => (
-        <DivMenu key={index}>
-          <SpanMenuName>{el.name}</SpanMenuName>
-          <span>{el.price}</span>
-        </DivMenu>
-      ));
-      return (
-        <DivFlex key={index}>
-          <SpanInfoTitle>메뉴</SpanInfoTitle>
-          <DivWrapper>{menuList}</DivWrapper>
-        </DivFlex>
-      );
-    }
-  });
+const DivMapContainer = styled.div`
+  width: 100%;
+  height: 328px;
+  cursor: pointer;
+`;
 
-  return (
-    <DivMainWrap>
-      <DivContent>
-        <SectionRstDetail>
-          <Header>
-            <DivRstTitle>
-              <DivHeaderLeft>
-                <span>{rstData.name}</span>
-                <SpanRate>{rstData.rate}</SpanRate>
-              </DivHeaderLeft>
-              <DivWrap>
-                <ButtonReview>
-                  <IWriteimg />
-                  <SpanReview>리뷰쓰기</SpanReview>
-                </ButtonReview>
-                <ButtonReview>
-                  <IWant />
-                  <SpanReview>가고싶다</SpanReview>
-                </ButtonReview>
-              </DivWrap>
-            </DivRstTitle>
-            <DivHeaderBot>
-              <SpanView left={-974} right={-817}>
-                {rstData.view}
-              </SpanView>
-              <SpanView left={-800} right={-648}>
-                {rstData.reviewNum}
-              </SpanView>
-              <SpanView left={-828} right={-774}>
-                {rstData.like}
-              </SpanView>
-            </DivHeaderBot>
-          </Header>
-          <DivInfoRst>{infoList}</DivInfoRst>
-        </SectionRstDetail>
-        <SectionIntro>
-          <DivRstIntro>
-            <SpanInfoTitle>{intro.intro}</SpanInfoTitle>
-            <SpanRstIntro>{intro.content}</SpanRstIntro>
-          </DivRstIntro>
-        </SectionIntro>
-      </DivContent>
-      <DivSide></DivSide>
-    </DivMainWrap>
-  );
-};
+const SectionTag = styled.section`
+  padding: 33px 0;
+`;
 
-export default DetailMain;
+const SpanTagTitle = styled.span`
+  display: block;
+  font-size: 1.438rem;
+  line-height: 1.2em;
+  color: #ff792a;
+`;
+
+const DivTagWrapper = styled.div`
+  padding-top: 10px;
+  display: inline-block;
+`;
+
+const DivTagList = styled.div`
+  margin: 15px 3px 0 3px;
+  padding: 0 20px;
+  font-size: 0.938rem;
+  line-height: 38px;
+  letter-spacing: 0em;
+  display: inline-block;
+  color: #6a6a6a;
+  border: 1px solid #cbcbcb;
+  border-radius: 50px;
+  background-color: #fff;
+`;
+
+const DivMoreReview = styled.div`
+  display: flex;
+  align-items: center;
+  min-width: 130px;
+  height: 72px;
+  cursor: pointer;
+  justify-content: center;
+  &:before {
+    display: inline-block;
+    background-image: url("https://mp-seoul-image-develop-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png?fit=around|*:*&crop=*:*;*,*&output-format=png&output-quality=80");
+    background-size: 635px 609px;
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+    content: "";
+    margin-right: 17px;
+  }
+  &:after {
+    display: inline-block;
+    background-image: url("https://mp-seoul-image-develop-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png?fit=around|*:*&crop=*:*;*,*&output-format=png&output-quality=80");
+    background-size: 635px 609px;
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+    content: "";
+    margin-left: 17px;
+  }
+`;
+
+const SpanMore = styled.span`
+  font-size: 19px;
+  color: #ff792a;
+`;
