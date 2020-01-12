@@ -21,23 +21,27 @@ function Index(props) {
       </h1>
       <div className="ul_wrapper">
         <ul className={`navbar_lists ${isNavOpen ? "open" : ""}`}>
+          <li className="list_logo">
+            <span className="mobileLogo"></span>
+          </li>
+          <li className={`navbar_list mobile`}>
+            <Link to="/">홈</Link>
+          </li>
           <li className="navbar_list">
             <Link to="/eat_deal">EAT딜</Link>
           </li>
           <li className="navbar_list">
             <Link to="/top_lists">맛집 리스트</Link>
           </li>
-          <li className="navbar_list">
-            <Link to="/mango_picks">망고 스토리</Link>
-          </li>
-          <li>
-            <span onClick={clickMobileNav}>x</span>
+          <li className="navbar_list close_button">
+            <span className="x_button" onClick={clickMobileNav}>
+              &times;
+            </span>
           </li>
         </ul>
         <ul className="navbar_lists mobile">
           <li className="hamburger_li">
             <div className="hamburger" onClick={clickMobileNav}>
-              {/* <div className={`hamburger ${this.state. ? 'active' : ''}`}> */}
               <span></span>
               <span></span>
               <span></span>
