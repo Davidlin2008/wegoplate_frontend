@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import fetchData from "../../../Utils/Fetch";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ImgModal from "../ImgModal";
 
 const Imgslide = () => {

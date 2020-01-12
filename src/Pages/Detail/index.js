@@ -1,8 +1,14 @@
 import React from "react";
 import Imgslide from "./Imgslide";
+import DetailMain from "./DetailMain";
 
 const Detail = () => {
-  return <Imgslide />;
+  return (
+    <div>
+      <Imgslide />
+      <DetailMain />
+    </div>
+  );
 };
 
 export default Detail;
