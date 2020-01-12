@@ -22,7 +22,7 @@ function Index(props) {
       <div className="ul_wrapper">
         <ul className={`navbar_lists ${isNavOpen ? "open" : ""}`}>
           <li className="list_logo">
-            <span className="mobileLogo"></span>
+            <span className="mobile_logo"></span>
           </li>
           <li className={`navbar_list mobile`}>
             <Link to="/">홈</Link>

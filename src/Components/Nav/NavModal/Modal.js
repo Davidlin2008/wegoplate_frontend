@@ -25,7 +25,7 @@ const Modal = ({ isShowing, hide }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <NavLink to="/login">
+              <NavLink to="/login" className="login_wrapper">
                 <span className="login_button">로그인</span>
               </NavLink>
             </div>
