@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Media from "../../../Utils/Media";
 
 const ReviewList = ({ rate }) => {
   const ratingImg = index => {
@@ -63,6 +64,9 @@ const DivReviewerProfile = styled.div`
   margin: 15px 35px 0 8px;
   display: flex;
   flex-direction: column;
+  ${Media.small`
+    margin-right: 10px
+  `}
 `;
 
 const ImgReviwerImg = styled.img`
@@ -72,6 +76,10 @@ const ImgReviwerImg = styled.img`
   border-radius: 50%;
   overflow: hidden;
   background-color: #dbdbdb;
+  ${Media.small`
+      width:45px;
+      height:45px;
+  `}
 `;
 
 const SpanReviwerName = styled.span`
@@ -91,6 +99,9 @@ const SpanWriteStat = styled.span`
   margin-right: 2px;
   font-size: 11px;
   color: #cbcbcb;
+  ${Media.small`
+    display:none;
+  `}
   &:before {
     display: inline-block;
     content: "";
@@ -104,6 +115,10 @@ const SpanWriteStat = styled.span`
 
 const DivReviewContext = styled.div`
   width: 605px;
+  ${Media.small`
+    width: 100%;
+    margin-right: 80px;
+  `}
 `;
 
 const PReviewDay = styled.p`
@@ -115,6 +130,9 @@ const PReviewDay = styled.p`
 const PReviewContext = styled.p`
   font-size: 15px;
   line-height: 1.666;
+  ${Media.small`
+    font-size: 12px;
+  `}
 `;
 
 const ImgReviewImg = styled.img`
@@ -122,6 +140,10 @@ const ImgReviewImg = styled.img`
   height: 120px;
   margin-right: 10px;
   margin: 17px 10px 0 0;
+  ${Media.small`
+    width: 70px;
+    height: 70px;
+  `}
 `;
 
 const DivReviewRating = styled.div`
@@ -136,6 +158,9 @@ const DivReviewImg = styled.div`
   background-position: ${({ left }) => left}px -866px;
   width: 44px;
   height: 44px;
+  ${Media.small`
+    display: none;
+  `}
 `;
 
 const SpanReviewText = styled.span`
@@ -143,4 +168,7 @@ const SpanReviewText = styled.span`
   color: #ff792a;
   margin-top: 10px;
   text-align: center;
+  ${Media.small`
+    display: none;
+  `}
 `;

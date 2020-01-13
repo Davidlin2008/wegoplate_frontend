@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fetchData from "../../../Utils/Fetch";
 import styled from "styled-components";
+import Media from "../../../Utils/Media";
 
 const EatDeal = () => {
   const [slide, setSlide] = useState(0);
@@ -66,6 +67,9 @@ const DivRstMain = styled.div`
   border-top: 1px solid #dbdbdb;
   display: flex;
   border-bottom: 1px solid #e9e9e9;
+  ${Media.small`
+    width: 100%;
+  `}
 `;
 
 const DivEatLeft = styled.div`
@@ -94,6 +98,9 @@ const PDealLabel = styled.p`
 
 const DivEatRight = styled.div`
   width: 680px;
+  ${Media.small`
+    width: 100%;
+  `}
 `;
 
 const DivRightHeader = styled.div`
@@ -180,6 +187,8 @@ const ButtonToLeft = styled.button`
   background-color: transparent;
   border: none;
   top: 30%;
+  margin: 0;
+  padding: 0;
 `;
 
 const ButtonToRight = styled.button`
@@ -192,4 +201,6 @@ const ButtonToRight = styled.button`
   border: none;
   top: 30%;
   right: 0;
+  margin: 0;
+  padding: 0;
 `;
