@@ -7,6 +7,7 @@ import React, {
 import styled, { css } from "styled-components";
 import fetchData from "../../../Utils/Fetch";
 import ReviewList from "../ReviewList";
+import Media from "../../../Utils/Media";
 
 const DetailReview = forwardRef((props, ref) => {
   const [data, setData] = useState({});
@@ -56,8 +57,6 @@ const DetailReview = forwardRef((props, ref) => {
     moreOnClick() {
       fetchData(`http://localhost:3000/data/${stateCheck()}.json`).then(res => {
         setRating(ratingReview.concat(res.reviewContent));
-        console.log(res.reviewContent);
-        console.log(ratingReview);
       });
     }
   }));
@@ -117,6 +116,9 @@ const DivReviewContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
   border-bottom: 1px solid #dbdbdb;
+  ${Media.small`
+    width: 100%;
+  `}
 `;
 
 const HeaderReviewHeader = styled.header`
@@ -153,6 +155,8 @@ const ButtonFilterBtn = styled.button`
   font-size: 16px;
   border: none;
   color: #9b9b9b;
+  margin: 0;
+  padding: 0;
   &:after {
     content: "|";
     margin: 0 7px;

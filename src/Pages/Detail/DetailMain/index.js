@@ -5,6 +5,9 @@ import styled from "styled-components";
 import NearbyList from "../NearbyList";
 import EatDeal from "../EatDeal";
 import DetailReview from "../DetailReview";
+import OtherTopList from "../OtherTopList";
+import RelativeList from "../RelativeList";
+import Media from "../../../Utils/Media";
 
 const DetailMain = () => {
   const [rstData, setData] = useState("");
@@ -102,6 +105,8 @@ const DetailMain = () => {
         <DivMoreReview onClick={() => child.current.moreOnClick()}>
           <SpanMore>더보기</SpanMore>
         </DivMoreReview>
+        <OtherTopList />
+        <RelativeList />
       </DivContent>
       <DivSide>
         <DivMapContainer>
@@ -125,12 +130,18 @@ export default DetailMain;
 const DivMainWrap = styled.div`
   margin-top: 6px;
   display: flex;
+  ${Media.small`
+    width:100%
+  `}
 `;
 
 const DivContent = styled.div`
   width: 800px;
   padding: 0 20px;
   margin: 0 auto;
+  ${Media.small`
+    width: 100%
+  `}
 `;
 
 const DivSide = styled.div`
@@ -144,12 +155,20 @@ const SectionRstDetail = styled.section`
   margin-top: 20px;
   padding: 30px 0 0;
   border-bottom: 1px solid #e9e9e9;
+  ${Media.small`
+    margin-top: 0;
+    padding-top: 15px;
+    width: 100%;
+  `}
 `;
 
 const Header = styled.header`
   border-bottom: 1px solid #e9e9e9;
   position: relative;
   padding-bottom: 10px;
+  ${Media.small`
+    margin: 0 10px;
+  `}
 `;
 
 const DivRstTitle = styled.div`
@@ -232,6 +251,10 @@ const SpanView = styled.span`
 
 const DivInfoRst = styled.div`
   padding: 20px 0 60px;
+  ${Media.small`
+    padding: 10px 0 10px;
+    width: 100%
+  `}
 `;
 
 const SpanInfoTitle = styled.span`
@@ -283,6 +306,9 @@ const DivFlex = styled.div`
 const SectionIntro = styled.section`
   width: 800px;
   margin: 0 auto;
+  ${Media.small`
+    width: 100%
+  `}
 `;
 
 const DivRstIntro = styled.div`

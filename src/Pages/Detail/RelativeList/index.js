@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Media from "../../../Utils/Media";
 
 const RelativeList = () => {
   const [relativeList, setList] = useState([]);
@@ -52,6 +53,9 @@ const LiEachRst = styled.li`
   width: 365px;
   height: 180px;
   margin-bottom: 32px;
+  ${Media.small`
+    width: 100%;
+  `}
 `;
 
 const DivCardDim = styled.div`

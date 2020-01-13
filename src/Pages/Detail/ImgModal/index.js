@@ -22,7 +22,7 @@ const ImgModal = ({ handdleToggle }) => {
   };
 
   const imgMap = imgList.map((el, index) => (
-    <WrapDiv>
+    <WrapDiv key={index}>
       <MapImg src={el.link} />
     </WrapDiv>
   ));
