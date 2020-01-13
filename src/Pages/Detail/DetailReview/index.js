@@ -12,10 +12,10 @@ import Media from "../../../Utils/Media";
 const DetailReview = forwardRef((props, ref) => {
   const [data, setData] = useState({});
   const [reviewFilter, setFilter] = useState({
-    all: true,
-    good: false,
-    soso: false,
-    bad: false
+    all: "true",
+    good: "false",
+    soso: "false",
+    bad: "false"
   });
   const [ratingReview, setRating] = useState([]);
 
@@ -28,13 +28,13 @@ const DetailReview = forwardRef((props, ref) => {
 
   const onClick = key => {
     setFilter({
-      all: false,
-      good: false,
-      soso: false,
-      bad: false
+      all: "false",
+      good: "false",
+      soso: "false",
+      bad: "false"
     });
     setFilter({
-      [key]: true
+      [key]: "true"
     });
     setRating([]);
     // 데이터 받을시 각자 다른  엔드포인트로 하면 되지않을까????ㅜ
@@ -163,7 +163,7 @@ const ButtonFilterBtn = styled.button`
     color: #9b9b9b;
   }
   ${({ filter }) =>
-    filter &&
+    filter === "true" &&
     css`
       color: #ff792a;
     `}
