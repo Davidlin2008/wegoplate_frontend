@@ -15,7 +15,7 @@ const Section = styled.section`
   @media only screen and (max-width: ${size.tablet}) and (min-width: ${size.mobile}) {
     display: flex;
     flex-direction: column;
-    height: 696px;
+    height: 716px;
     overflow: hidden;
     padding-bottom: 40px;
   }
