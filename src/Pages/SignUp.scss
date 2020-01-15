@@ -1,0 +1,68 @@
+.sign_up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  height: 100vh;
+
+  .sign_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: none;
+    z-index: 100;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+    box-shadow: 0px 0px 0px;
+    .sign_item {
+      display: flex;
+      width: 52%;
+      margin-bottom: 20px;
+      flex-direction: column;
+      font-weight: 600;
+      .event {
+        font-size: 12px;
+        color: red;
+        font-weight: 100;
+      }
+      span {
+        margin-bottom: 5px;
+      }
+    }
+    .signUp_button {
+      width: 52%;
+      height: 50px;
+      margin-left: 0px;
+      background: linear-gradient(to left, red, #ff7100);
+      color: white;
+      border: none;
+
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .name {
+      margin-bottom: 20px;
+      span {
+        color: #ff7100;
+        font-size: 60px;
+        font-weight: 800;
+      }
+    }
+  }
+}
+.signUp_input {
+  width: 100%;
+  height: 40px;
+  padding-left: 25px;
+  border: 1px solid #808080;
+  color: #333333;
+  box-sizing: border-box;
+}
+.border {
+  border: 2px solid red;
+  color: red;
+}
