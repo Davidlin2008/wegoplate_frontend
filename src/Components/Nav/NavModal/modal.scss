@@ -51,6 +51,14 @@
 .modal-header {
   display: flex;
   justify-content: flex-end;
+  button {
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+    padding: 0.3rem 1rem;
+    margin-left: 0.5rem;
+  }
 }
 
 .modal-close-button {
@@ -61,15 +69,6 @@
   opacity: 0.3;
   cursor: pointer;
   border: none;
-}
-
-button {
-  font-size: 0.9rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 3px;
-  padding: 0.3rem 1rem;
-  margin-left: 0.5rem;
 }
 
 // position: fixed;

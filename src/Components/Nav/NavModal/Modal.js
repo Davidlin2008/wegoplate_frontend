@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "../NavModal/modal.scss";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Modal = ({ isShowing, hide }) =>
+const Modal = ({ isShowing, hide, isLoggedin }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -25,9 +25,15 @@ const Modal = ({ isShowing, hide }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <NavLink to="/login" className="login_wrapper">
-                <span className="login_button">로그인</span>
-              </NavLink>
+              {isLoggedin ? (
+                <Link to="/" className="login_wrapper">
+                  <span className="login_button">로그아웃</span>
+                </Link>
+              ) : (
+                <Link to="/signin" className="login_wrapper">
+                  <span className="login_button">로그인</span>
+                </Link>
+              )}
             </div>
           </div>
         </React.Fragment>,
