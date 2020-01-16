@@ -7,6 +7,7 @@ import SignUp from "./Pages/SignUp";
 import EatDealMain from "./Pages/EatDeal/EatDealMain";
 import Detail from "./Pages/Detail";
 import Review from "./Pages/Review";
+import TopList from "./Pages/TopList";
 
 class Routes extends React.Component {
   render() {
@@ -16,10 +17,12 @@ class Routes extends React.Component {
           <Route exact path="/" component={Main} />
           <Route path="/signin" component={SignIn} />
           <Route exact path="/detail" component={EatDealDetail} />
+          <Route exact path="/detail" component={Detail} />
           <Route path="/eatdeal" component={EatDealMain} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/detail" component={Detail} />
           <Route exact path="/review" component={Review} />
+          <Route exact path="/toplist" component={TopList} />
         </Switch>
       </Router>
     );
