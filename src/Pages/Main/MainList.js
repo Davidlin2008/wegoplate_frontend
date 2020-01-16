@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Slide from "../Components/Main/Slide";
-import List from "../Components/Main/List";
+import Slide from "../../Components/Main/Slide";
+import List from "../../Components/Main/List";
 //import { slide, list, highrate, eatdealing } from "../Components/Main/data";
 
-export default function Main() {
+export default function MainList() {
   const [slide, setSlide] = useState([]);
   const [list, setList] = useState([]);
   const [eatdealing, setEatdealing] = useState([]);
