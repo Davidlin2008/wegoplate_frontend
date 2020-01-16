@@ -131,13 +131,13 @@
       }
     }
   }
-  .eat_deal {
+  .eat_deal_img {
     display: none;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .eat_deal {
+  .eat_deal_img {
     position: absolute;
     left: 40px;
     bottom: 30px;

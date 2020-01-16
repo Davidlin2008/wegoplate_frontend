@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../Header/Header.scss";
 import { Link } from "react-router-dom";
-import eat.png from "../../../Images";
+import eat from "../../../Images";
 
 export default class Header extends Component {
   render() {
