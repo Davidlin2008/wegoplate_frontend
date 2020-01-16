@@ -1,55 +1,56 @@
 import React from "react";
-import ListEntry from "./ListEntry";
+import SlideEntry from "./SlideEntry";
 import styled from "styled-components";
 import { orange, size } from "./Styled";
 
 const Section = styled.section`
-  border-bottom: solid 1px #dbdbdb;
   margin-top: 10px;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #dbdbdb;
   @media only screen and (min-width: ${size.tablet}) {
     display: flex;
     flex-wrap: wrap;
-    height: 610px;
+    height: 550px;
     overflow: hidden;
   }
   @media only screen and (max-width: ${size.tablet}) and (min-width: ${size.mobile}) {
     display: flex;
     flex-direction: column;
-    height: 716px;
+    height: 550px;
     overflow: hidden;
-    padding-bottom: 40px;
   }
 `;
-const ListContainer = styled.div`
-  @media only screen and (max-width: ${size.web}) and (mix-width: ${size.tablet}) {
-    height: 550px;
-  }
+const SlideContainer = styled.div`
+  height: 440px;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 10px 4%;
+  margin: 40px 5%;
 `;
 
 const H2 = styled.h2`
-  position: relative;
-  margin: 10px auto 25px 100px;
-  top: 0;
   display: block;
+  position: relative;
+  margin: 25px auto -15px 100px;
+  top: 0;
   color: ${orange};
   font-weight: lighter;
 `;
-
-export default function List(props) {
+// const Button = styled.button`
+//   width: 20px;
+//   display: inline-block;
+// `;
+export default function Slide(props) {
   console.log(props.datas);
   return (
     <Section>
       <H2>{props.title}</H2>
-      <ListContainer className="ListContainer">
+      <SlideContainer className="SlideContainer">
         {props.datas.map((data, key) => (
-          <ListEntry data={data} key={key} />
+          <SlideEntry data={data} key={key} />
         ))}
-      </ListContainer>
+      </SlideContainer>
     </Section>
   );
 }
