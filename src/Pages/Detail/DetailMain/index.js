@@ -8,8 +8,9 @@ import DetailReview from "../DetailReview";
 import OtherTopList from "../OtherTopList";
 import RelativeList from "../RelativeList";
 import Media from "../../../Utils/Media";
+import { withRouter } from "react-router-dom";
 
-const DetailMain = () => {
+const DetailMain = props => {
   const [rstData, setData] = useState("");
   const [data, setList] = useState([]);
   const [intro, setIntro] = useState("");
@@ -49,6 +50,10 @@ const DetailMain = () => {
     }
   });
 
+  const goToReview = () => {
+    props.history.push("/Review");
+  };
+
   const tagMapList = tagList.map((el, index) => {
     return (
       <DivTagWrapper key={index}>
@@ -70,7 +75,7 @@ const DetailMain = () => {
                 <SpanRate>{rstData.rate}</SpanRate>
               </DivHeaderLeft>
               <DivWrap>
-                <ButtonReview>
+                <ButtonReview onClick={goToReview}>
                   <IWriteimg />
                   <SpanReview>리뷰쓰기</SpanReview>
                 </ButtonReview>
@@ -125,7 +130,7 @@ const DetailMain = () => {
   );
 };
 
-export default DetailMain;
+export default withRouter(DetailMain);
 
 const DivMainWrap = styled.div`
   margin-top: 6px;
