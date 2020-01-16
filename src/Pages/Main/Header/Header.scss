@@ -80,13 +80,13 @@
     font-size: 1.2em;
     line-height: 28px;
   }
-  .eat_deal {
+  .header .header_img .header_p_wrapper .eat_deal_img {
     display: none;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .eat_deal {
+.eat_deal_img {
+  @media screen and (min-width: 768px) {
     position: absolute;
     left: 40px;
     bottom: 30px;

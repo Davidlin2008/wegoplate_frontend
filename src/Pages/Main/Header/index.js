@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../Header/Header.scss";
 import { Link } from "react-router-dom";
+import eat.png from "../../../Images";
 
 export default class Header extends Component {
   render() {
@@ -22,11 +23,7 @@ export default class Header extends Component {
               </label>
             </div>
             <Link to="/eat_deal">
-              <img
-                className="eat_deal"
-                src={require("../../../Images/eat.png")}
-                alt="sad"
-              />
+              <img className="eat_deal_img" src={eat} alt="sad" />
             </Link>
           </div>
         </div>

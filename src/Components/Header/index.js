@@ -76,7 +76,7 @@ export default function Header() {
           </div>
           <Link to="/eat_deal">
             <img
-              className="eat_deal"
+              className="eat_deal_img"
               src={require("../../Images/eat.png")}
               alt="sad"
             />
