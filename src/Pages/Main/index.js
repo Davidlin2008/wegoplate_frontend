@@ -1,3 +1,4 @@
+import Footer from "../../Components/Footer";
 import React, { Component } from "react";
 import Nav from "../../Components/Nav";
 import Header from "../../Components/Header";
@@ -9,6 +10,7 @@ export default class Main extends Component {
       <div>
         <Nav />
         <Header />
+        <Footer />
       </div>
     );
   }
