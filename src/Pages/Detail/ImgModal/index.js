@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import fetchData from "../../../Utils/Fetch";
 
-// props => props.inverter && css` 트루일때 적용하는 css 넣어주고 트루를 하나의 유즈스테이트로 관리해서 체인지하는 함수를 버튼에다가 넣어주기???
 const ImgModal = ({ handdleToggle }) => {
   const [imgList, setList] = useState([]);
   const [leftPx, setLeft] = useState(0);
@@ -23,12 +22,14 @@ const ImgModal = ({ handdleToggle }) => {
   };
 
   const imgMap = imgList.map((el, index) => (
-    <WrapDiv>
+    <WrapDiv key={index}>
       <MapImg src={el.link} />
     </WrapDiv>
   ));
 
-  const navImgMap = imgList.map((el, index) => <ImgNavList src={el.link} />);
+  const navImgMap = imgList.map((el, index) => (
+    <ImgNavList key={index} src={el.link} />
+  ));
 
   return (
     <>

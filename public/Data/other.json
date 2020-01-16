@@ -1,0 +1,54 @@
+{
+  "other": [
+    {
+      "img": "https://mp-seoul-image-production-s3.mangoplate.com/379100/61698_1576450695208_48262?fit=around|383:383&crop=383:383;*,*&output-format=jpg&output-quality=80",
+      "name": "쥬에",
+      "rate": "4.8",
+      "info": "이태원/한남동 - 정통 중식 / 일반 중식"
+    },
+    {
+      "img": "https://mp-seoul-image-production-s3.mangoplate.com/1760/840737_1573572463328_511508?fit=around|383:383&crop=383:383;*,*&output-format=jpg&output-quality=80",
+      "name": "소세지하우스",
+      "rate": "4.8",
+      "info": "용산/숙대 - 치킨 / 호프 / 펍"
+    },
+    {
+      "img": "https://mp-seoul-image-production-s3.mangoplate.com/584169_1547480999387724.jpg?fit=around|383:383&crop=383:383;*,*&output-format=jpg&output-quality=80",
+      "name": "산울림1992",
+      "rate": "4.7",
+      "info": "홍대 - 전통 주점 / 포차"
+    },
+    {
+      "img": "https://mp-seoul-image-production-s3.mangoplate.com/71939_1567613605336743.jpg?fit=around|383:383&crop=383:383;*,*&output-format=jpg&output-quality=80",
+      "name": "이치류",
+      "rate": "4.7",
+      "info": "홍대 - 스테이크 / 바베큐"
+    }
+  ],
+  "relative": [
+    {
+      "img1": "https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/axto3b0uzl52iuhh.jpg?fit=around|748:748&crop=748:748;*,*&output-format=jpg&output-quality=80",
+      "img2": "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg",
+      "title": "[10월 2주] 이주의 홀릭 리뷰",
+      "desc": "10월 둘째 주 이주의 호릭 리뷰를 확인해보세요!"
+    },
+    {
+      "img1": "https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/kukjvoxkyg5pqfqm.png?fit=around|748:748&crop=748:748;*,*&output-format=jpg&output-quality=80",
+      "img2": "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg",
+      "title": "2020 서울 인기 맛집 TOP 100",
+      "desc": "망고플레이트가 선정한 2020년에 꼭 가봐야할 서울 맛집"
+    },
+    {
+      "img1": "https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/kukjvoxkyg5pqfqm.png?fit=around|748:748&crop=748:748;*,*&output-format=jpg&output-quality=80",
+      "img2": "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg",
+      "title": "2020 강북 인기 맛집 TOP 100",
+      "desc": "망고플레이트가 선정한 2020년에 꼭 가봐야할 강북 맛집"
+    },
+    {
+      "img1": "https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/962naqz9f4sjhjlj.jpg?fit=around|748:748&crop=748:748;*,*&output-format=jpg&output-quality=80",
+      "img2": "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg",
+      "title": "2020 중식 인기 맛집 TOP 100",
+      "desc": "망고플레이트가 선정한 2020년에 꼭 가봐야 할 중식 맛집"
+    }
+  ]
+}

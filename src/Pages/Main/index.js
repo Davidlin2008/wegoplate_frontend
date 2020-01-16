@@ -1,10 +1,17 @@
-import React from "react";
 import Footer from "../../Components/Footer";
+import React, { Component } from "react";
+import Nav from "../../Components/Nav";
+import Header from "../../Components/Header";
+import "../../Styles/Common.scss";
 
-export default function index() {
-  return (
-    <div>
-      <Footer />
-    </div>
-  );
+export default class Main extends Component {
+  render() {
+    return (
+      <div>
+        <Nav />
+        <Header />
+        <Footer />
+      </div>
+    );
+  }
 }

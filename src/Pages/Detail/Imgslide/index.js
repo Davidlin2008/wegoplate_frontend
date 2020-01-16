@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import fetchData from "../../../Utils/Fetch";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ImgModal from "../ImgModal";
+import Media from "../../../Utils/Media";
 
 const Imgslide = () => {
   const [imglist, setlist] = useState([]);
@@ -56,6 +57,9 @@ const FlowPhotoDiv = styled.div`
   position: relative;
   width: 100%;
   overflow-x: scroll;
+  ${Media.small`
+    height: 170px;
+  `}
 `;
 
 const OwlItemDiv = styled.div`
@@ -65,6 +69,11 @@ const OwlItemDiv = styled.div`
   cursor: pointer;
   position: relative;
   min-width: 280px;
+  ${Media.small`
+      min-width: 170px;
+      width:170px;
+      height:170px;
+  `}
 `;
 
 const ListImg = styled.img`
@@ -88,6 +97,11 @@ const ButtonMore = styled.div`
   background: rgba(0, 0, 0, 0.44);
   border-radius: 50px;
   border: 0 none;
+  ${Media.small`
+      width: 100px;
+      height: 40px;
+      font-size: 13px;
+  `}
 `;
 
 const TextBtn = styled.p`

@@ -1,0 +1,238 @@
+$orange: #f27104;
+.nav {
+  display: flex;
+  z-index: 100;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 61px;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    span {
+      margin-left: 40px;
+      display: block;
+      background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-logo-horizontal.svg");
+      background-position: 0px 0px;
+      width: 100px;
+      height: 33px;
+      background-repeat: no-repeat no-repeat;
+      cursor: pointer;
+    }
+  }
+  .ul_wrapper {
+    display: flex;
+  }
+  .navbar_lists {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+
+    &.mobile {
+      display: none;
+    }
+
+    .navbar_list {
+      display: inline-block;
+      a {
+        margin: 20px;
+        min-width: 320px;
+        text-decoration: none;
+        text-align: center;
+        height: 100%;
+        color: #888888;
+        cursor: pointer;
+        font-size: 16px;
+        &:link,
+        &:visited,
+        &:active,
+        &:focus {
+          text-decoration: none;
+        }
+      }
+      &.mobile {
+        display: none;
+      }
+
+      .x_button {
+        display: none;
+      }
+    }
+  }
+  .human_icon {
+    margin-right: 40px;
+    display: block;
+    background-image: url("../../Images/main-sprite.png");
+    background-position: -82px -919px;
+    width: 34px;
+    height: 34px;
+    background-repeat: no-repeat no-repeat;
+    cursor: pointer;
+  }
+}
+
+// $mobile: 'only screen and (max-width: 768px)';
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    background-color: white;
+    border-bottom: 1px solid #dbdbdb;
+    .logo {
+      span {
+        width: 20px;
+        height: 34px;
+        background-image: url("../../Images/main-mobile.png");
+        background-position: -491px -56px;
+        background-size: 635px 609px;
+      }
+    }
+    .navbar_lists {
+      display: none;
+      &.mobile {
+        display: block;
+        width: 30px;
+        height: 30px;
+      }
+      &.open {
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-color: #ff792a;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+        .list_logo {
+          height: 90px;
+          text-align: center;
+          border-bottom: white 1px solid;
+          .mobile_logo {
+            display: inline-block;
+            margin-top: 30px;
+            width: 19px;
+            height: 35px;
+            background-image: url("../../Images/mobile-logo.png");
+            background-position: -800px 0;
+            background-size: 920px 160px;
+          }
+        }
+        .navbar_list {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          font-size: 28px;
+          font-weight: bolder;
+          line-height: 1.5;
+          border-bottom: white 1px solid;
+
+          &.close_button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: inline-block;
+            border: 0;
+          }
+          .x_button {
+            color: white;
+            display: inline-block;
+            font-size: 40px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .human_icon {
+      background-image: url("../../Images/main-sprite.png");
+      background-position: -82px -919px;
+      display: block;
+      width: 34px;
+      height: 33px;
+      cursor: pointer;
+    }
+  }
+}
+
+.hamburger {
+  margin-top: 5px;
+  right: 20px;
+  height: 30px;
+  width: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 30px;
+  background: #7f7f7f;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(4) {
+  top: 18px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburger.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.hamburger.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+.hide {
+  display: none;
+}
