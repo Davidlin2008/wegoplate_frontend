@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import fetchData from "../../../Utils/Fetch";
 
 const RstList = () => {
   const [data, setData] = useState([]);
+
+  const moreOnClick = () => {
+    fetchData(`http://localhost:3000/data/.json`).then(res => {
+      // setRating(ratingReview.concat(res.reviewContent));
+    });
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/Data/toplist.json")
@@ -17,8 +24,8 @@ const RstList = () => {
     <DivListWrap>
       <UlRstList>
         {data.map((el, index) => (
-          <LiEachRst>
-            <DivWithReview key={index}>
+          <LiEachRst key={index}>
+            <DivWithReview>
               <DivImgWrap>
                 <ImgRstImg src={el.img} />
               </DivImgWrap>
@@ -50,6 +57,7 @@ const RstList = () => {
           </LiEachRst>
         ))}
       </UlRstList>
+      <DivMoreReview onClick={moreOnClick}>더보기</DivMoreReview>
     </DivListWrap>
   );
 };
@@ -157,4 +165,35 @@ const DivReviwerImg = styled.div`
 const SpanReviewerName = styled.span`
   font-weight: bold;
   margin-right: 10px;
+`;
+
+const DivMoreReview = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #fe7100;
+  min-width: 130px;
+  height: 72px;
+  cursor: pointer;
+  justify-content: center;
+  &:before {
+    display: inline-block;
+    background-image: url("https://mp-seoul-image-develop-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png?fit=around|*:*&crop=*:*;*,*&output-format=png&output-quality=80");
+    background-size: 635px 609px;
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+    content: "";
+    margin-right: 17px;
+  }
+  &:after {
+    display: inline-block;
+    background-image: url("https://mp-seoul-image-develop-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png?fit=around|*:*&crop=*:*;*,*&output-format=png&output-quality=80");
+    background-size: 635px 609px;
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+    content: "";
+    margin-left: 17px;
+  }
 `;
