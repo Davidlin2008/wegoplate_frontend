@@ -1,3 +1,4 @@
+import Footer from "../../Components/Footer";
 import React, { Component } from "react";
 import Index from "../../Components/Nav";
 import Header from "../../Components/Header";
@@ -9,6 +10,7 @@ export default class Main extends Component {
       <div>
         <Index />
         <Header {...this.props} />
+        <Footer />
       </div>
     );
   }
