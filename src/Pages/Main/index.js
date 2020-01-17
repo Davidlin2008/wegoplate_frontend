@@ -8,7 +8,8 @@ export default class Main extends Component {
     return (
       <div>
         <Index />
-        <Header />
+        <Header {...this.props} />
+        <Footer />
       </div>
     );
   }
