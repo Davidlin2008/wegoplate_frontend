@@ -53,6 +53,7 @@ const DetailReview = forwardRef((props, ref) => {
   /// 유알엘 뒤에 붙일것
 
   // 데이터 받을때 테스트 해보기 현재 누른상태 체크해야함
+
   useImperativeHandle(ref, () => ({
     moreOnClick() {
       fetchData(`http://localhost:3000/data/${stateCheck()}.json`).then(res => {
