@@ -35,7 +35,8 @@ const Modal = ({ isOpen, close }) => {
     newObj[index][index] = !newObj[index][index];
     setobjj(newObj);
   };
-
+  console.log(obj);
+  console.log(objj);
   const handleSub = () => {
     const q = [];
     if (changeNum === 13) {
@@ -122,6 +123,7 @@ const Modal = ({ isOpen, close }) => {
     height: 51px;
     font-size: 13px;
     color: #c7c7c7;
+    border:none;
     ${props =>
       (props.className === 13 &&
         css`
@@ -166,7 +168,7 @@ const Modal = ({ isOpen, close }) => {
     justify-content: center;
     align-items: center;
 
-
+    
     width: 48%;
 
     margin-bottom: 15px;
@@ -175,9 +177,8 @@ const Modal = ({ isOpen, close }) => {
   const Btn = styled.button`
     width: 100%;
     height: 50px;
+    margin-left:10px;
     border-radius: 30px;
-
-
     background-color: white;
     color: #7f7f7f;
     ${props =>

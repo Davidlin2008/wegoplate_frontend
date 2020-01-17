@@ -119,9 +119,8 @@ const SignUp = props => {
         })
       })
         .then(res => res.json())
-
         .then(alert("회원가입이 완료되었습니다."))
-        .then(props.history.push("./"));
+        .then(props.history.push("./signin"));
     } else {
       alert("입력값 혹은 중복,형식체크를 확인해주세요");
     }

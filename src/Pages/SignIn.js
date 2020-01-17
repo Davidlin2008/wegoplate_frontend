@@ -6,7 +6,7 @@ import styled from "styled-components";
 import KakaoLogin from "react-kakao-login";
 import { withRouter } from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -49,6 +49,7 @@ const SignIn = () => {
 
             console.log(res);
             localStorage.setItem("access_token", res.access_token);
+            props.history.push("./");
           } else {
             alert("아이디 혹은 비밀번호를 확인해주세요");
             console.log(res);
@@ -127,12 +128,12 @@ const SignIn = () => {
         <Spans>또는</Spans>
         <div style={col}>
           <KakaoButton
-            jsKey="efdfcfc0aed4ceb029983295554821a9"
+            jsKey="5158dfef9fc5025b8a39aaa96b34ee83"
             onSuccess={responseKakao}
             onFailure={responseFail}
             getProfile="true"
           >
-            <img src={kakao} style={kakaob}></img>
+            <img src={kakao} style={kakaob} alt="kakao"></img>
             카카오톡으로 시작하기
           </KakaoButton>
         </div>
