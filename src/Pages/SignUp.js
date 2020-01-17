@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./SignUp.scss";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-const SignUp = () => {
+
+const SignUp = props => {
   const [nick_name, setNick_name] = useState("");
   const [idCheck, setIdCheck] = useState("");
   const [password, setPassword] = useState("");
@@ -118,7 +119,9 @@ const SignUp = () => {
         })
       })
         .then(res => res.json())
-        .then(alert("회원가입이 완료되었습니다."));
+
+        .then(alert("회원가입이 완료되었습니다."))
+        .then(props.history.push("./"));
     } else {
       alert("입력값 혹은 중복,형식체크를 확인해주세요");
     }

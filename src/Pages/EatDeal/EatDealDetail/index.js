@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import food from "../../../Images/food.jpg";
 import NavBar from "../../../../src/Components/NavBar";
 import { Link } from "react-router-dom";
 const EatDealDetail = () => {
+  const [result, setResult] = useState({});
+
+  useEffect(async => {
+    fetch("http://10.58.7.97:8000/restaurant/27/eat_deal_detail")
+      .then(res => res.json())
+      .then(res => setResult(res.result));
+  }, []);
+
   const DetailMain = styled.div`
     width: 100%;
     position: relative;
@@ -45,8 +52,9 @@ const EatDealDetail = () => {
   const DetailImg = styled.div`
     width: 100%;
     height: 576px;
-    background-image: url(${food});
-    background-position-y: -200px;
+
+    background-size: 100%;
+    background-position-y: -180px;
   `;
   const FoodInfo = styled.div`
     width: 97%;
@@ -164,15 +172,24 @@ const EatDealDetail = () => {
       line-height: 1.5;
     }
   `;
+
+  console.log(result.image);
+  if (result.image === undefined) return <></>;
+
   return (
     <DetailMain>
       <NavBar />
       <PaymentBtn>구매하기</PaymentBtn>
       <FoodDetail>
-        <DetailImg />
+        <DetailImg
+          style={{
+            backgroundImage: `url(${result.image.images}`
+          }}
+        ></DetailImg>
+
         <FoodInfo>
           <RestName>
-            <span>[광화문] 라그릴리아 광화문점</span>
+            <span>{result.title}</span>
           </RestName>
           <LinkBtn>
             <I />
@@ -181,48 +198,30 @@ const EatDealDetail = () => {
           </LinkBtn>
           <Ptag>패밀리세트(3~4인)</Ptag>
           <div>
-            <Use>사용기간:93일</Use>
-            <span>(2020-01-12 ~ 2020-04-13)</span>
+            <Use>사용기간:{result.remaining_date}일</Use>
+            <span>
+              ({result.start_date} ~ {result.end_date})
+            </span>
           </div>
           <PriceBlock>
-            <OriginalPrice>₩81,200</OriginalPrice>
+            <OriginalPrice>₩{result.price}</OriginalPrice>
           </PriceBlock>
           <SalePriceBlock>
-            <SalePercent>15%</SalePercent> <SalePrice>₩69,000</SalePrice>
+            <SalePercent>{result.discount_rate}%</SalePercent>{" "}
+            <SalePrice>₩{result.discounted_price}</SalePrice>
           </SalePriceBlock>
         </FoodInfo>
         <Line />
         <Introduction>
           <h4>식당 소개</h4>
           <IntroUl>
-            <li>
-              라그릴리아는 이탈리어로 '그릴'이라는 뜻으로 정통 이탈리안 요리를
-              새롭게 해석한 맛있는 요리와 소믈리에가 엄선한 와인과 맥주를 함께
-              즐기실 수 있는 이탈리안 캐주얼 레스토랑입니다.
-            </li>
+            <li>{result.restaurant_info} </li>
           </IntroUl>
         </Introduction>
         <Introduction>
           <h4>메뉴 소개</h4>
           <IntroUl>
-            <li>
-              구성: 비프온더스톤 채끝등심 + 로얄 까르보나라 스파게티 + 해산물
-              토마토 스파게티 + 프레쉬 그리너리 플랫피자
-            </li>
-            <li>
-              비프온더스톤 채끝등심 : 뜨겁게 달구어 나온 돌 위에 스테이크를 올려
-              즉석에서 불을 붙여 풍부한 향, 육즙 소리를 오감으로 느낄 수 있는
-              라그릴리아 대표 메뉴
-            </li>
-            <li>
-              로얄 까르보나라 스파게티 : 수란을 곁들인 진한 크림 소스의 로얄
-              까르보나라 스파게티
-            </li>
-            <li>
-              프레쉬 그리너리 플랫피자 : 얇은 플랫브레드 위에 프로슈토와
-              방울토마토, 라디치오, 루꼴라 등 다양한야채를 올리고 화이트와인
-              비네거와 발사믹소스로 맛을 살린 플랫 피자
-            </li>
+            <li>{result.menu_info}</li>
           </IntroUl>
         </Introduction>
         <Introduction>

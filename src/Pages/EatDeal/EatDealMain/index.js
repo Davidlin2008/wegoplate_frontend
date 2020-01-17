@@ -5,11 +5,14 @@ import styled from "styled-components";
 import EatDealModal from "../../../../src/Components/EatDealModal";
 import NavBar from "../../../../src/Components/NavBar";
 const EatDealMain = () => {
-  useEffect(() => {
-    fetch("http://localhost:3000/data.json").then(data => {});
-  }, []);
-  const [eatArr, setEatArr] = useState([]);
+  const [result, setResult] = useState([]);
   const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    fetch("http://10.58.7.97:8000/restaurant/eat_deal")
+      .then(res => res.json())
+      .then(res => setResult(res.result));
+  }, []);
 
   const openModal = () => {
     setModal(true);
@@ -36,7 +39,9 @@ const EatDealMain = () => {
     border-radius: 30px;
     border: 1px solid #ff7100;
     background-color: white;
-    zindex: 101;
+
+    z-index: 101;
+
     color: #ff7100;
     font-weight: 600;
     opacity: 10;
@@ -46,6 +51,12 @@ const EatDealMain = () => {
       width: 18%;
     }
   `;
+
+  if (result === undefined) {
+    return <></>;
+  }
+  console.log(result);
+
   return (
     <div className="eat_main">
       <NavBar></NavBar>
@@ -54,14 +65,19 @@ const EatDealMain = () => {
       </div>
       <EatDealModal isOpen={modal} close={closeModal} />
       <DealBlock>
-        <EatDealImage />
-        <EatDealImage />
-        <EatDealImage />
-        <EatDealImage />
-        <EatDealImage />
-        <EatDealImage />
-        <EatDealImage />
-        <EatDealImage />
+        {result.map((el, index) => (
+          <EatDealImage
+            key={index}
+            id={el.eat_deal_id}
+            title={el.title}
+            restId={el.restaurant_id}
+            image={el.image.images}
+            menu={el.menu}
+            discount={el.discount_rate}
+            price={el.price}
+            disPrice={el.discounted_price}
+          />
+        ))}
       </DealBlock>
     </div>
   );

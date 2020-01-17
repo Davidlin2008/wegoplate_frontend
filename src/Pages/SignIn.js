@@ -46,6 +46,8 @@ const SignIn = () => {
         .then(res => {
           if (res.message === "POSSIBLE") {
             alert("로그인 완료.");
+
+            console.log(res);
             localStorage.setItem("access_token", res.access_token);
           } else {
             alert("아이디 혹은 비밀번호를 확인해주세요");
