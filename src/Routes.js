@@ -9,9 +9,6 @@ import Detail from "./Pages/Detail";
 import Review from "./Pages/Review";
 import BestList from "./Pages/BestList";
 import TopList from "./Pages/TopList";
-import BestList from "./Pages/BestList";
-
-
 
 class Routes extends React.Component {
   render() {
