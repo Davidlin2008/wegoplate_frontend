@@ -1,47 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SearchListEntry from "./SearchListEntry";
 import styled from "styled-components";
-import { orange, size } from "./Styled";
-import { searchList } from "../SearchList/data";
+import { orange } from "./Styled";
 
 const Section = styled.section`
   margin-top: 10px;
-  @media only screen and (min-width: ${size.tablet}) {
-    display: flex;
-    flex-wrap: wrap;
-    height: 610px;
-  }
-  @media only screen and (max-width: ${size.tablet}) and (min-width: ${size.mobile}) {
-    display: flex;
-    flex-direction: column;
-    height: 716px;
-    padding-bottom: 40px;
-  }
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  flex-direction: column;
+  padding-bottom: 40px;
 `;
 const ListContainer = styled.div`
-  @media only screen and (max-width: ${size.web}) and (mix-width: ${size.tablet}) {
-    height: 550px;
-  }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 10px 4%;
 `;
 
-const H2 = styled.h2`
+const H1 = styled.h1`
   position: relative;
-  margin: 10px auto 25px 100px;
+  margin: 95px auto 0px 100px;
   top: 0;
   display: block;
   color: ${orange};
   font-weight: lighter;
+  font-size: 1.438rem;
 `;
 
 export default function SearchList(props) {
-  console.log(props.datas);
+  console.log(props);
+  const [searchList, setSearchList] = useState([]);
+
+  useEffect(() => {
+    const fetchSearchList = async () => {
+      const res = await fetch(
+        `http://10.58.7.97:8000/restaurant/search/${props.location.search.slice(
+          2
+        )}`
+      );
+      const data = await res.json();
+      console.log("하이", data);
+      setSearchList(data.restaurant_list);
+    };
+    fetchSearchList();
+  }, [props.history.search, props.location.search]);
+
+  if (searchList === undefined) return <></>;
   return (
     <Section>
-      <H2>{props.title}</H2>
+      <H1>맛집 인기 검색 순위</H1>
       <ListContainer className="ListContainer">
         {searchList.map((data, key) => (
           <SearchListEntry data={data} key={key} />

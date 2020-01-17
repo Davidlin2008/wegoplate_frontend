@@ -1,20 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { g, orange, size } from "./Styled";
+import { g, orange } from "./Styled";
 
 const Wrapper = styled.div`
-  @media only screen and (min-width: ${size.tablet}) {
-    width: 100%;
-  }
-  @media only screen and (max-width: 996px) {
-    width: 50%;
-    min-width: 250px;
-  }
-  @media only screen and (max-width: ${size.tablet}) and (min-width: ${size.mobile}) {
-    width: 100%;
-    background-size: 105%;
-    margin: 20px 4%;
-  }
+  width: 100%;
+  min-width: 200px;
+  min-height: 300px;
+  background-size: 105%;
+  margin: 20px 4%;
   background-image: url(${props => props.data.image});
   background-position: center;
   background-size: 160%;
@@ -22,24 +15,14 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   flex-grow: 1, 1, 1, 1;
-  width: 100%;
   height: 200px;
   font-size: 1.3rem;
 `;
 const ListEntryWrapper = styled.div`
-  margin: 10px;
-  @media only screen and (min-width: ${size.web}) {
-    width: 23%;
-    min-width: 250px;
-  }
-  @media only screen and (min-width: ${size.tablet}) {
-    width: 23%;
-    min-width: 250px;
-  }
-  @media only screen and (max-width: ${size.tablet}) and (min-width: ${size.mobile}) {
-    width: 70%;
-    min-width: 300px;
-  }
+  width: 40%;
+  margin: 40px;
+  min-width: 300px;
+  cursor: pointer;
 `;
 const InfoWrapper = styled.div`
   display: block;
