@@ -10,22 +10,22 @@ export default function MainList() {
   const [highrate, setHighrate] = useState([]);
 
   const fetchSlide = async () => {
-    const res = await fetch("http://10.58.7.97:8000/restaurant/topic/1");
+    const res = await fetch("http://13.125.34.234:8000/restaurant/topic/1");
     const data = await res.json();
     setSlide(data.top_list);
   };
   const fetchList = async () => {
-    const res = await fetch("http://10.58.7.97:8000/restaurant/topic/4");
+    const res = await fetch("http://13.125.34.234:8000/restaurant/topic/4");
     const data = await res.json();
     setList(data.top_list);
   };
   const fetchEatdealing = async () => {
-    const res = await fetch("http://10.58.1.195:8000/restaurant/2");
+    const res = await fetch("http://13.125.34.234:8000/restaurant/2");
     const data = await res.json();
     setEatdealing(data.restaurant_list);
   };
   const fetchHighrate = async () => {
-    const res = await fetch("http://10.58.1.195:8000/restaurant/3");
+    const res = await fetch("http://13.125.34.234:8000/restaurant/3");
     const data = await res.json();
     setHighrate(data.restaurant_list);
   };

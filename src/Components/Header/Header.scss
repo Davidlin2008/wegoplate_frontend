@@ -6,7 +6,6 @@
     }
   }
   .header_img {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -17,8 +16,7 @@
 
     .header_p_wrapper {
       color: white;
-      margin-top: 150px;
-
+      padding-top: 150px;
       p {
         margin: 0;
         font-size: 2.2rem;
@@ -140,7 +138,7 @@
   .eat_deal_img {
     position: absolute;
     left: 40px;
-    bottom: 30px;
+    bottom: 350px;
     display: inline-block;
     height: 46px;
   }

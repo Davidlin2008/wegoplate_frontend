@@ -36,7 +36,7 @@ export default function SearchList(props) {
   useEffect(() => {
     const fetchSearchList = async () => {
       const res = await fetch(
-        `http://10.58.7.97:8000/restaurant/search/${props.location.search.slice(
+        `http://13.125.34.234:8000/restaurant/search/${props.location.search.slice(
           2
         )}`
       );

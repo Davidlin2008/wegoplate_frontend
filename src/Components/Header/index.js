@@ -33,7 +33,7 @@ export default function Header(props) {
   useEffect(() => {
     const fetchSearchList = async () => {
       const res = await fetch(
-        `http://10.58.7.97:8000/restaurant/keyword?text=${inputValue}`
+        `http://13.125.34.234:8000/restaurant/keyword?text=${inputValue}`
       );
       const data = await res.json();
       setSearchList(data);
@@ -74,7 +74,7 @@ export default function Header(props) {
               onClick={() => props.history.push(`/search?=${inputValue}`)}
             />
           </div>
-          <Link to="/eat_deal">
+          <Link to="/eatdeal">
             <img
               className="eat_deal_img"
               src={require("../../Images/eat.png")}

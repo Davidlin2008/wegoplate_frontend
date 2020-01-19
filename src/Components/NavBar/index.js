@@ -31,7 +31,7 @@ function Index(props) {
             <Link to="/eatdeal">EAT딜</Link>
           </li>
           <li className="navbar_list">
-            <Link to="/top_lists">맛집 리스트</Link>
+            <Link to="/toplist">맛집 리스트</Link>
           </li>
           <li className="navbar_list close_button">
             <span className="x_button" onClick={clickMobileNav}>

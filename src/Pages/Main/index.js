@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Index from "../../Components/Nav";
 import Header from "../../Components/Header";
 import "../../Styles/Common.scss";
+import MainList from "./MainList";
 
 export default class Main extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class Main extends Component {
       <div>
         <Index />
         <Header {...this.props} />
+        <MainList />
         <Footer />
       </div>
     );
