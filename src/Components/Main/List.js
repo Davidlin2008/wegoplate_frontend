@@ -47,7 +47,7 @@ export default function List(props) {
       <H2>{props.title}</H2>
       <ListContainer className="ListContainer">
         {props.datas.map((data, key) => (
-          <ListEntry data={data} key={key} />
+          <ListEntry data={data} key={key} {...props} />
         ))}
       </ListContainer>
     </Section>

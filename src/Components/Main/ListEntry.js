@@ -73,7 +73,10 @@ const Info = styled.div`
 export default function ListEntry(props) {
   return (
     <ListEntryWrapper>
-      <Wrapper data={props.data}></Wrapper>
+      <Wrapper
+        data={props.data}
+        onClick={() => props.history.push(`detail/${props.data.id}`)}
+      ></Wrapper>
       <InfoWrapper>
         <Name>{props.data.name}</Name>
         <Rate>{props.data.grade}</Rate>

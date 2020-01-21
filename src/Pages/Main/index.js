@@ -11,7 +11,7 @@ export default class Main extends Component {
       <div>
         <Index />
         <Header {...this.props} />
-        <MainList />
+        <MainList {...this.props} />
         <Footer />
       </div>
     );

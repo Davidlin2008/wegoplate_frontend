@@ -48,7 +48,7 @@ export default function Slide(props) {
       <H2>{props.title}</H2>
       <SlideContainer className="SlideContainer">
         {props.datas.map((data, key) => (
-          <SlideEntry data={data} key={key} />
+          <SlideEntry data={data} key={key} {...props} />
         ))}
       </SlideContainer>
     </Section>
