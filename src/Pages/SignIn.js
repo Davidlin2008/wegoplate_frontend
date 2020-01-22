@@ -133,7 +133,7 @@ const SignIn = props => {
             onFailure={responseFail}
             getProfile="true"
           >
-            <img src={kakao} style={kakaob}></img>
+            <img src={kakao} style={kakaob} alt="kakao"></img>
             카카오톡으로 시작하기
           </KakaoButton>
         </div>

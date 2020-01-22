@@ -1,14 +1,16 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
-
-const Modal = ({ isOpen, close }) => {
+import { useAsync } from "react-async";
+import queryString from "query-string";
+const Modal = ({ isOpen, close, append }) => {
   const [obj, setObj] = useState([]);
   const [objj, setobjj] = useState([]);
   const [result, setResult] = useState([]);
   const [changeNum, setChangeNum] = useState(13);
   const [gyungi, setGyungi] = useState([]);
+  const [queryArr, setQueryArr] = useState([]);
 
+  console.log(queryArr);
   useEffect(() => {
     fetch("http://10.58.7.97:8000/restaurant/eat_deal_location", {
       method: "GET"
@@ -37,28 +39,13 @@ const Modal = ({ isOpen, close }) => {
   };
 
   const handleSub = () => {
-    const q = [];
-    if (changeNum === 13) {
-      obj.map((el, index) => {
-        if (el[index] === true) {
-          q.push(el[index]);
-        }
-        return q.join("&");
-      });
-    } else if (changeNum === 5) {
-      objj.map((el, index) => {
-        if (el[index] === true) {
-          q.push(el[index]);
-        }
-        return q.join("&");
-      });
+    const match = queryArr.join("&");
+    console.log(match);
+    if (queryArr.length > 0) {
+      fetch(`http://13.125.34.234:8000/restaurant/eat_deal_search?${match}`)
+        .then(res => res.json())
+        .then(res => append(res.result));
     }
-    fetch("http://10.58.7.97:8000/restaurant/eat_deal_location", {
-      method: "POST",
-      body: JSON.stringify({})
-    })
-      .then(res => res.json())
-      .then(res => res);
   };
 
   const ModalView = styled.div`
@@ -70,7 +57,7 @@ const Modal = ({ isOpen, close }) => {
     border-top: 1px solid #888888;
     background-color: white;
     top: 61px;
-    @media (max-width: 810px) {
+    @media (max-width: 900px) {
       width: 100%;
     }
   `;
@@ -106,22 +93,18 @@ const Modal = ({ isOpen, close }) => {
     width: 100%;
     height: 51px;
 
-
     border-top: 1px solid #c7c7c7;
-
   `;
   const AreaKinds = styled.li`
     width: 20%;
     height: 51px;
-
-
-
   `;
   const AreaKindsBtn = styled.button`
     width: 100%;
     height: 51px;
     font-size: 13px;
     color: #c7c7c7;
+    border: none;
     ${props =>
       (props.className === 13 &&
         css`
@@ -166,7 +149,6 @@ const Modal = ({ isOpen, close }) => {
     justify-content: center;
     align-items: center;
 
-
     width: 48%;
 
     margin-bottom: 15px;
@@ -175,9 +157,8 @@ const Modal = ({ isOpen, close }) => {
   const Btn = styled.button`
     width: 100%;
     height: 50px;
+    margin-left: 10px;
     border-radius: 30px;
-
-
     background-color: white;
     color: #7f7f7f;
     ${props =>
@@ -223,17 +204,20 @@ const Modal = ({ isOpen, close }) => {
     border: none;
   `;
 
-  
   const func = () => {
     if (changeNum === 13) {
       return result.map((el, index) => {
         if (obj.length < result.length) {
           obj.push({ [index]: false });
         }
+
         return (
           <BtnLi>
             <Btn
-              onClick={() => handleToggle(index)}
+              onClick={() => {
+                handleToggle(index);
+                setQueryArr(queryArr.concat(`list=${el.id}`));
+              }}
               border={obj[index][index]}
               color={obj[index][index]}
               id={el.id}
@@ -248,10 +232,14 @@ const Modal = ({ isOpen, close }) => {
         if (objj.length < gyungi.length) {
           objj.push({ [index]: false });
         }
+
         return (
           <BtnLi>
             <Btn
-              onClick={() => handleToggleTwo(index)}
+              onClick={() => {
+                handleToggleTwo(index);
+                setQueryArr(queryArr.concat(`list=${el.id}`));
+              }}
               border={objj[index][index]}
               color={objj[index][index]}
               id={el.id}
@@ -275,7 +263,6 @@ const Modal = ({ isOpen, close }) => {
             </TopBottom>
             <Area>
               <AreaKinds>
-
                 <AreaKindsBtn
                   onClick={() => setChangeNum(13)}
                   className={changeNum}
@@ -296,9 +283,16 @@ const Modal = ({ isOpen, close }) => {
               <BtnKinds>{func()}</BtnKinds>
             </MiddleBox>
             <TopBottom>
-              <Apply onClick={handleSub}>적용</Apply>
+              <Apply
+                onClick={() => {
+                  handleSub();
+                  close();
+                }}
+              >
+                적용
+              </Apply>
 
-              <Delete>지우기</Delete>
+              <Delete></Delete>
             </TopBottom>
           </ModalView>
         </React.Fragment>
