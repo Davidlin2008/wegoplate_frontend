@@ -19,13 +19,14 @@ const RelativeList = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const goToBestList = () => {
-    props.history.push("/bestlist");
+  const goToBestList = a => {
+    console.log(relativeList);
+    props.history.push(`/bestlist`);
   };
 
   const relativeMap = relativeList.map((el, index) => (
     <LiEachRst key={index}>
-      <DivCardDim onClick={goToBestList} />
+      <DivCardDim onClick={() => goToBestList(index)} />
       <DivCardImg left={el.image} />
       <DivTextContainer>
         <PCardTitle>{el.title}</PCardTitle>

@@ -28,7 +28,7 @@ class Routes extends React.Component {
           <Route exact path="/toplist/:name" component={TopList} />
           <Route exact path="/toplist" component={TopList} />
           <Route path="/search" render={props => <SearchLists {...props} />} />
-          <Route exact path="/bestlist:name" component={BestList} />
+          <Route exact path="/bestlist" component={BestList} />
         </Switch>
       </Router>
     );

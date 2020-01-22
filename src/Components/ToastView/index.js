@@ -29,7 +29,7 @@ const DivToastWrap = styled.div`
   background-color: rgb(255, 169, 38);
   left: 50%;
   transform: translate(-50%, -50%);
-  top: 120px;
+  top: 100px;
   z-index: 100;
   opacity: 0;
   text-align: center;

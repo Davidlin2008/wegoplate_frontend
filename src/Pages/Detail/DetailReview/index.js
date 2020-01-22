@@ -30,10 +30,12 @@ const DetailReview = forwardRef((props, ref) => {
   }, []);
 
   useEffect(() => {
-    fetchData(`${API_URL}/restaurant/${props.params}/review`).then(res => {
-      setRating(res);
-      setNumber(res);
-    });
+    fetchData(`http://10.58.7.97:8000/restaurant/${props.params}/review`).then(
+      res => {
+        setRating(res);
+        setNumber(res);
+      }
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -72,9 +74,11 @@ const DetailReview = forwardRef((props, ref) => {
   // };
   useImperativeHandle(ref, () => ({
     moreOnClick() {
+      console.log(ratingReview);
       fetchData(
-        `${API_URL}/restaurant/1/review?taste=${stateCheck()}&offset=${ratingReview.offset +
-          1}`
+        `http://10.58.7.97:8000/restaurant/${
+          props.params
+        }/review?taste=${stateCheck()}&offset=${ratingReview.offset + 1}`
       ).then(res => {
         const copy = Object.assign({}, ratingReview);
         if (copy.result !== res.result) {
