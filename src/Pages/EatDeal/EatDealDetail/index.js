@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../../../../src/Components/NavBar";
 import { Link } from "react-router-dom";
-const EatDealDetail = () => {
+const EatDealDetail = props => {
   const [result, setResult] = useState({});
 
-  useEffect(async => {
-    fetch("http://10.58.7.97:8000/restaurant/27/eat_deal_detail")
+  useEffect(() => {
+    fetch(
+      `http://10.58.7.97:8000/restaurant/${props.match.params.name}/eat_deal_detail`
+    )
       .then(res => res.json())
       .then(res => setResult(res.result));
-  }, []);
+  }, [props.match.params.name]);
 
   const DetailMain = styled.div`
     width: 100%;
@@ -28,7 +30,7 @@ const EatDealDetail = () => {
     width: 50%;
 
     z-index: 99;
-    @media (max-width: 768px) {
+    @media (max-width: 980px) {
       width: 100%;
     }
   `;
@@ -45,7 +47,7 @@ const EatDealDetail = () => {
     z-index: 100;
     margin-left: 0px;
     box-sizing: border-box;
-    @media (max-width: 768px) {
+    @media (max-width: 980px) {
       width: 100%;
     }
   `;
@@ -55,6 +57,9 @@ const EatDealDetail = () => {
 
     background-size: 100%;
     background-position-y: -180px;
+    @media (max-width: 980px) {
+      width: 100%;
+    }
   `;
   const FoodInfo = styled.div`
     width: 97%;

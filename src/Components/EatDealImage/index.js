@@ -63,28 +63,29 @@ const EatDealImage = props => {
 
   return (
     <div className="eat_deal">
-      <Link to="./eatdetail" id={props.id}>
-        <div
-          className="eat_img"
-          style={{
-            backgroundImage: `url(${props.image}`
-          }}
-        >
-          <div style={eatImg}>
-            <ImgStyle>
-              <img src={newImg}></img>
+      {/* <Link to="./eatdetail" id={props.id}> */}
+      <div
+        onClick={props.onclick}
+        className="eat_img"
+        style={{
+          backgroundImage: `url(${props.image}`
+        }}
+      >
+        <div style={eatImg}>
+          <ImgStyle>
+            <img src={newImg}></img>
 
-              <Percent>
-                <span>{props.discount}%</span>
-              </Percent>
-            </ImgStyle>
-            <SaleBox>
-              <SaleMoney>￦{props.disPrice}</SaleMoney>
-              <Money>￦{props.price}</Money>
-            </SaleBox>
-          </div>
+            <Percent>
+              <span>{props.discount}%</span>
+            </Percent>
+          </ImgStyle>
+          <SaleBox>
+            <SaleMoney>￦{props.disPrice}</SaleMoney>
+            <Money>￦{props.price}</Money>
+          </SaleBox>
         </div>
-      </Link>
+      </div>
+      {/* </Link> */}
       <div className="explain">
         <div style={column}>
           <span className="area_name">{props.title}</span>

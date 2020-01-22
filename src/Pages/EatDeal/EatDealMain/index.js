@@ -4,7 +4,10 @@ import EatDealImage from "../../../../src/Components/EatDealImage";
 import styled from "styled-components";
 import EatDealModal from "../../../../src/Components/EatDealModal";
 import NavBar from "../../../../src/Components/NavBar";
-const EatDealMain = () => {
+import { useAsync } from "react-async";
+import { withRouter } from "react-router-dom";
+
+const EatDealMain = props => {
   const [result, setResult] = useState([]);
   const [modal, setModal] = useState(false);
 
@@ -13,6 +16,14 @@ const EatDealMain = () => {
       .then(res => res.json())
       .then(res => setResult(res.result));
   }, []);
+
+  const append = a => {
+    setResult(a);
+  };
+
+  const goToDetail = a => {
+    props.history.push(`/EatDetail/${a}`);
+  };
 
   const openModal = () => {
     setModal(true);
@@ -63,10 +74,11 @@ const EatDealMain = () => {
       <div className="areaNav">
         <EatBtn onClick={openModal}>지역 선택</EatBtn>
       </div>
-      <EatDealModal isOpen={modal} close={closeModal} />
+      <EatDealModal append={append} isOpen={modal} close={closeModal} />
       <DealBlock>
         {result.map((el, index) => (
           <EatDealImage
+            onclick={() => goToDetail(el.eat_deal_id)}
             key={index}
             id={el.eat_deal_id}
             title={el.title}
@@ -83,4 +95,4 @@ const EatDealMain = () => {
   );
 };
 
-export default EatDealMain;
+export default withRouter(EatDealMain);
