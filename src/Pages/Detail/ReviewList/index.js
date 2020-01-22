@@ -14,11 +14,12 @@ const ReviewList = ({ rate }) => {
     else return "나쁘다";
   };
   const imgList = index => {
-    return rate[index].imgList.map((el, index) => (
+    return rate[index].imglist.map((el, index) => (
       <ImgReviewImg key={index} src={el} />
     ));
   };
 
+  if (rate === undefined) return <></>;
   return rate.map((el, index) => {
     // if (index < 5)
     return (

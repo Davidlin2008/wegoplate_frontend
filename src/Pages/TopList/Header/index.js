@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { API_URL } from "../../../config";
 
-const Header = () => {
+const Header = props => {
   const [topData, setData] = useState({});
 
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/Data/toplist.json")
+  //     .then(data => data.json())
+  //     .then(data => setData(data.header));
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:3000/Data/toplist.json")
+    fetch(`${API_URL}/restaurant/toplist/${props.params}`)
       .then(data => data.json())
-      .then(data => setData(data.header));
+      .then(data => setData(data.toplist));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (topData === undefined) return <></>;
   return (
     <DivHeaderWrap>
       <DivHeadTitle>
-        <PDateClick>
-          {topData.click} 클릭 | {topData.date}
-        </PDateClick>
+        <PDateClick>{topData.created_at}</PDateClick>
         <H1Title>{topData.title}</H1Title>
-        <H2subTitle>{topData.subtitle}</H2subTitle>
+        <H2subTitle>{topData.description}</H2subTitle>
       </DivHeadTitle>
     </DivHeaderWrap>
   );

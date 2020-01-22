@@ -3,12 +3,12 @@ import Header from "./Header";
 import Index from "../../Components/Nav";
 import RstList from "./RstList";
 
-const TopList = () => {
+const TopList = props => {
   return (
     <>
       <Index />
-      <Header />
-      <RstList />
+      <Header params={props.match.params.name} />
+      <RstList params={props.match.params.name} />
     </>
   );
 };

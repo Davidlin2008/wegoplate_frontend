@@ -2,12 +2,14 @@ import React, {
   useState,
   useEffect,
   forwardRef,
-  useImperativeHandle
+  useImperativeHandle,
+  useRef
 } from "react";
 import styled, { css } from "styled-components";
 import fetchData from "../../../Utils/Fetch";
 import ReviewList from "../ReviewList";
 import Media from "../../../Utils/Media";
+import { API_URL } from "../../../config";
 
 const DetailReview = forwardRef((props, ref) => {
   const [data, setData] = useState({});
@@ -18,15 +20,31 @@ const DetailReview = forwardRef((props, ref) => {
     bad: "false"
   });
   const [ratingReview, setRating] = useState([]);
+  const [number, setNumber] = useState({});
 
   useEffect(() => {
     fetchData("http://localhost:3000/data/data.json").then(res => {
       setData(res.review);
-      setRating(res.reviewContent);
+      // setRating(res.reviewContent);
     });
   }, []);
 
-  const onClick = key => {
+  useEffect(() => {
+    fetchData(`${API_URL}/restaurant/${props.params}/review`).then(res => {
+      setRating(res);
+      setNumber(res);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const stateCheck = () => {
+    if (reviewFilter.all) return 4;
+    else if (reviewFilter.good) return 1;
+    else if (reviewFilter.soso) return 2;
+    else if (reviewFilter.bad) return 3;
+  };
+
+  const onClick = (key, num) => {
     setFilter({
       all: "false",
       good: "false",
@@ -38,26 +56,33 @@ const DetailReview = forwardRef((props, ref) => {
     });
     setRating([]);
     // 데이터 받을시 각자 다른  엔드포인트로 하면 되지않을까????ㅜ
-    setRating([]);
-    fetchData(`http://localhost:3000/data/${key}.json`).then(res => {
-      setRating(res.reviewContent);
-    });
+    fetchData(`${API_URL}/restaurant/${props.params}/review?taste=${num}`).then(
+      res => {
+        setRating(res);
+      }
+    );
   };
 
-  const stateCheck = () => {
-    if (reviewFilter.all) return "all";
-    else if (reviewFilter.good) return "good";
-    else if (reviewFilter.soso) return "soso";
-    else if (reviewFilter.bad) return "bad";
-  };
   /// 유알엘 뒤에 붙일것
 
   // 데이터 받을때 테스트 해보기 현재 누른상태 체크해야함
-
+  // const id = useRef(1);
+  // const setId = n => {
+  //   id.current = n;
+  // };
   useImperativeHandle(ref, () => ({
     moreOnClick() {
-      fetchData(`http://localhost:3000/data/${stateCheck()}.json`).then(res => {
-        setRating(ratingReview.concat(res.reviewContent));
+      fetchData(
+        `${API_URL}/restaurant/1/review?taste=${stateCheck()}&offset=${ratingReview.offset +
+          1}`
+      ).then(res => {
+        const copy = Object.assign({}, ratingReview);
+        if (copy.result !== res.result) {
+          const concatArr = copy.result.concat(res.result);
+          copy.result = concatArr;
+          copy.offset = res.offset;
+        }
+        setRating(copy);
       });
     }
   }));
@@ -67,45 +92,48 @@ const DetailReview = forwardRef((props, ref) => {
       <HeaderReviewHeader>
         <div>
           <H2ReviewTitle>리뷰</H2ReviewTitle>
-          <SpanReviewAllCount>({data.count})</SpanReviewAllCount>
+          <SpanReviewAllCount>({number.total_count})</SpanReviewAllCount>
         </div>
         <UlReviewFilter>
           <LiReviewList>
             <ButtonFilterBtn
               filter={reviewFilter.all}
-              onClick={() => onClick("all")}
+              onClick={() => onClick("all", 4)}
             >
-              전체<SpanFilterCount>({data.count})</SpanFilterCount>
+              전체
+              <SpanFilterCount>({number.total_count})</SpanFilterCount>
             </ButtonFilterBtn>
           </LiReviewList>
           <LiReviewList>
             <ButtonFilterBtn
               filter={reviewFilter.good}
-              onClick={() => onClick("good")}
+              onClick={() => onClick("good", 1)}
             >
-              맛있다<SpanFilterCount>({data.good})</SpanFilterCount>
+              맛있다
+              <SpanFilterCount>({number.good_count})</SpanFilterCount>
             </ButtonFilterBtn>
           </LiReviewList>
           <LiReviewList>
             <ButtonFilterBtn
               filter={reviewFilter.soso}
-              onClick={() => onClick("soso")}
+              onClick={() => onClick("soso", 2)}
             >
-              괜찮다<SpanFilterCount>({data.soso})</SpanFilterCount>
+              괜찮다
+              <SpanFilterCount>({number.soso_count})</SpanFilterCount>
             </ButtonFilterBtn>
           </LiReviewList>
           <LiReviewList>
             <ButtonFilterBtn
               filter={reviewFilter.bad}
-              onClick={() => onClick("bad")}
+              onClick={() => onClick("bad", 3)}
               last={true}
             >
-              별로<SpanFilterCount>({data.bad})</SpanFilterCount>
+              별로<SpanFilterCount>({number.bad_count})</SpanFilterCount>
             </ButtonFilterBtn>
           </LiReviewList>
         </UlReviewFilter>
       </HeaderReviewHeader>
-      <ReviewList rate={ratingReview} />
+      <ReviewList rate={ratingReview.result} />
     </DivReviewContainer>
   );
 });

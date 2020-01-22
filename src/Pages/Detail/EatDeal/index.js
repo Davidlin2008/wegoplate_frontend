@@ -2,24 +2,32 @@ import React, { useState, useEffect } from "react";
 import fetchData from "../../../Utils/Fetch";
 import styled from "styled-components";
 import Media from "../../../Utils/Media";
+import { API_URL } from "../../../config";
 
-const EatDeal = () => {
+const EatDeal = props => {
   const [slide, setSlide] = useState(0);
   const [eatData, setData] = useState([]);
 
+  // useEffect(() => {
+  //   fetchData("http://localhost:3000/Data/Data.json").then(res => {
+  //     setData(res.eatDeal);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    fetchData("http://localhost:3000/Data/Data.json").then(res => {
-      setData(res.eatDeal);
+    fetchData(`${API_URL}/restaurant/${props.params}/eat_deal`).then(res => {
+      setData(res.result);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const slideList = eatData.map((el, index) => (
     <DivEachCard key={index}>
-      <IgEatDeal url={el.url} />
-      <PFoodName>{el.name}</PFoodName>
-      <SpanSalePercent>{el.saleper}</SpanSalePercent>
-      <SpanCurrentPrice>{el.cureentPrice}</SpanCurrentPrice>
-      <SpanPrevPrice>{el.prevPrice}</SpanPrevPrice>
+      <IgEatDeal url={el.image.images} />
+      <PFoodName>{el.menu}</PFoodName>
+      <SpanSalePercent>{el.discount_rate}</SpanSalePercent>
+      <SpanCurrentPrice>{el.price}</SpanCurrentPrice>
+      <SpanPrevPrice>{el.discounted_price}</SpanPrevPrice>
     </DivEachCard>
   ));
 
