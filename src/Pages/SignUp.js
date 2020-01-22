@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SignUp.scss";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+
 const SignUp = props => {
   const [nick_name, setNick_name] = useState("");
   const [idCheck, setIdCheck] = useState("");

@@ -1,9 +1,12 @@
-import Footer from "../../Components/Footer";
 import React, { Component } from "react";
 import Index from "../../Components/Nav";
 import Header from "../../Components/Header";
 import "../../Styles/Common.scss";
+<<<<<<< HEAD
 import MainList from "./MainList";
+=======
+import Footer from "../../Components/Footer";
+>>>>>>> master
 
 export default class Main extends Component {
   render() {

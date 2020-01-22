@@ -46,6 +46,8 @@ const SignIn = props => {
         .then(res => {
           if (res.message === "POSSIBLE") {
             alert("로그인 완료.");
+
+            console.log(res);
             localStorage.setItem("access_token", res.access_token);
             props.history.push("./");
           } else {
