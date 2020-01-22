@@ -5,8 +5,8 @@ import { API_URL } from "../../../config";
 
 const OtherTopList = props => {
   const [otherList, setOther] = useState([]);
-  const goToTopList = () => {
-    props.history.push("/toplist");
+  const goToTopList = a => {
+    props.history.push(`/toplist/${a}`);
   };
 
   // useEffect(() => {
@@ -16,7 +16,7 @@ const OtherTopList = props => {
   // }, []);
 
   useEffect(() => {
-    fetch(`${API_URL}/restaurant/${props.params}/related`)
+    fetch(`${API_URL}/restaurant/${props.params}`)
       .then(res => res.json())
       .then(res => setOther(res));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,7 +28,11 @@ const OtherTopList = props => {
     return (
       <LiTopRst key={index}>
         <ImgRstImg src={el.image} />
-        <DivRstInfo onClick={goToTopList}>
+        <DivRstInfo
+          onClick={() => {
+            goToTopList(el.id);
+          }}
+        >
           <PRstName>
             {el.name} <SpanRstRate>{a}</SpanRstRate>
           </PRstName>
