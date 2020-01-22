@@ -42,7 +42,7 @@ const Modal = ({ isOpen, close, append }) => {
     const match = queryArr.join("&");
     console.log(match);
     if (queryArr.length > 0) {
-      fetch(`http://13.125.34.234:8000/restaurant/eat_deal_search?${match}`)
+      fetch(`http://10.58.7.97:8000/restaurant/eat_deal_search?${match}`)
         .then(res => res.json())
         .then(res => append(res.result));
     }
