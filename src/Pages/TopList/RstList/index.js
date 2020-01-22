@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import fetchData from "../../../Utils/Fetch";
+import { API_URL } from "../../../config";
 
-const RstList = () => {
+const RstList = props => {
   const [data, setData] = useState([]);
 
-  const moreOnClick = () => {
-    fetchData(`http://localhost:3000/data/.json`).then(res => {
-      // setRating(ratingReview.concat(res.reviewContent));
-    });
-  };
+  // const moreOnClick = () => {
+  //   fetchData(`http://localhost:3000/data/.json`).then(res => {
+  //     // setRating(ratingReview.concat(res.reviewContent));
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/Data/toplist.json")
+  //     .then(res => res.json())
+  //     .then(res => setData(res.rst))
+  //     .catch(err => console.log(err));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/Data/toplist.json")
+    fetch(`${API_URL}/restaurant/toplist/${props.params}`)
       .then(res => res.json())
-      .then(res => setData(res.rst))
+      .then(res => setData(res.restaurants))
       .catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -27,7 +36,7 @@ const RstList = () => {
           <LiEachRst key={index}>
             <DivWithReview>
               <DivImgWrap>
-                <ImgRstImg src={el.img} />
+                <ImgRstImg src={el.image} />
               </DivImgWrap>
               <DivWidth>
                 <DivInfoWrapper>
@@ -46,10 +55,10 @@ const RstList = () => {
                   </div>
                 </DivInfoWrapper>
                 <DIvFlexWrap>
-                  <DivReviwerImg />
+                  <DivReviwerImg img={el.user_image} />
                   <PcontentWrapper>
-                    <SpanReviewerName>{el.reviewer}</SpanReviewerName>
-                    {el.content}
+                    <SpanReviewerName>{el.user_nickname}</SpanReviewerName>
+                    {el.user_review}
                   </PcontentWrapper>
                 </DIvFlexWrap>
               </DivWidth>
@@ -57,7 +66,7 @@ const RstList = () => {
           </LiEachRst>
         ))}
       </UlRstList>
-      <DivMoreReview onClick={moreOnClick}>더보기</DivMoreReview>
+      <DivMoreReview>더보기</DivMoreReview>
     </DivListWrap>
   );
 };
@@ -152,9 +161,9 @@ const PcontentWrapper = styled.p`
 `;
 
 const DivReviwerImg = styled.div`
-  margin: 0 10px 120px 0;
+  margin: 0 10px 0px 0;
   float: left;
-  background-image: url("https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/463989_1539055993354?fit=around|56:56&crop=56:56;*,*&output-format=jpg&output-quality=80");
+  background-image: url(${({ img }) => img});
   height: 35px;
   width: 35px;
   border-radius: 35px;

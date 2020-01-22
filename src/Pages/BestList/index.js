@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Index from "../../Components/Nav";
+import { API_URL } from "../../config";
 
 const BestList = () => {
-  // const [date, setData] = useState([]);
-  // useEffect(() => {
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(res => setData(res));
-  // }, []);
+  const [date, setData] = useState([]);
+  useEffect(() => {
+    fetch(`${API_URL}/restaurant/toplist`)
+      .then(res => res.json())
+      .then(res => setData(res.toplists));
+  }, []);
+
+  const bestListmap = date.map((el, index) => (
+    <LiItem>
+      <DivEachList>
+        <ImgRst src={el.image} />
+        <Divdim />
+        <DivTextWrap>
+          <SpanMainTitle>{el.title}</SpanMainTitle>
+          <SpanSubTitle>{el.description}</SpanSubTitle>
+        </DivTextWrap>
+      </DivEachList>
+    </LiItem>
+  ));
 
   return (
     <>
@@ -16,88 +30,7 @@ const BestList = () => {
       <DivMainContainer>
         <Divinner>
           <H1Title>믿고 보는 맛집 리스트</H1Title>
-          <UlBestList>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-            <LiItem>
-              <DivEachList>
-                <ImgRst src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/cbarz0vorket4qdu.jpg?fit=around|585:585&crop=585:585;*,*&output-format=jpg&output-quality=80" />
-                <Divdim />
-                <DivTextWrap>
-                  <SpanMainTitle>주차 하기 좋은 맛집 베스트 20곳</SpanMainTitle>
-                  <SpanSubTitle>"맛집엔 주차장이 필수 아니겠어?"</SpanSubTitle>
-                </DivTextWrap>
-              </DivEachList>
-            </LiItem>
-          </UlBestList>
+          <UlBestList>{bestListmap}</UlBestList>
         </Divinner>
       </DivMainContainer>
     </>
@@ -137,7 +70,7 @@ const LiItem = styled.li`
 `;
 
 const DivEachList = styled.div`
-  width: 580px;
+  width: 550px;
   height: 260px;
   position: relative;
   display: flex;

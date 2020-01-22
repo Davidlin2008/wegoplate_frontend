@@ -9,6 +9,7 @@ import OtherTopList from "../OtherTopList";
 import RelativeList from "../RelativeList";
 import Media from "../../../Utils/Media";
 import { withRouter } from "react-router-dom";
+import { API_URL } from "../../../config";
 
 const DetailMain = props => {
   const [rstData, setData] = useState("");
@@ -20,27 +21,63 @@ const DetailMain = props => {
   useEffect(() => {
     fetchData("http://localhost:3000/Data/Data.json").then(data => {
       setData(data.rstData);
-      setList(data.rstInfo);
       setIntro(data.rstIntro);
-      setTagList(data.tagList);
+      // setTagList(data.tagList);
     });
   }, []);
 
-  const infoList = data.map((el, index) => {
-    if (el.infoTitle !== "메뉴") {
+  useEffect(() => {
+    fetchData(`${API_URL}/restaurant/${props.params}/info`).then(data => {
+      setList(data);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchData(`${API_URL}/restaurant/${props.params}/tag`).then(data => {
+      setTagList(data.result);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const goToReview = () => {
+    props.history.push(`/Review/${props.params}`);
+  };
+
+  const goToTopList = () => {
+    props.history.push("/toplist");
+  };
+  const goToBestList = () => {
+    props.history.push("/bestlist");
+  };
+
+  const tagMapList = tagList.map((el, index) => {
+    return (
+      <DivTagWrapper key={index}>
+        <DivTagList>#{el.tag}</DivTagList>
+      </DivTagWrapper>
+    );
+  });
+
+  if (data.result === undefined) return <></>;
+
+  const infoList = data.result.map((el, index) => {
+    if (el.title !== "메뉴") {
       return (
         <div key={index}>
-          <SpanInfoTitle>{el.infoTitle}</SpanInfoTitle>
-          <SpanInfoDetail>{el.infoContent[0]}</SpanInfoDetail>
+          <SpanInfoTitle>{el.title}</SpanInfoTitle>
+          <SpanInfoDetail>{el.content[0]}</SpanInfoDetail>
         </div>
       );
     } else {
-      const menuList = data[data.length - 1].infoContent.map((el, index) => (
-        <DivMenu key={index}>
-          <SpanMenuName>{el.name}</SpanMenuName>
-          <span>{el.price}</span>
-        </DivMenu>
-      ));
+      const menuList = data.result[data.result.length - 1].content.map(
+        (el, index) => (
+          <DivMenu key={index}>
+            <SpanMenuName>{el.menu}</SpanMenuName>
+            <span>{el.price}</span>
+          </DivMenu>
+        )
+      );
       return (
         <DivFlex key={index}>
           <SpanInfoTitle>메뉴</SpanInfoTitle>
@@ -50,20 +87,6 @@ const DetailMain = props => {
     }
   });
 
-  const goToReview = () => {
-    props.history.push("/Review");
-  };
-
-  const tagMapList = tagList.map((el, index) => {
-    return (
-      <DivTagWrapper key={index}>
-        <DivTagList>#{el}</DivTagList>
-      </DivTagWrapper>
-    );
-  });
-
-  if (data[0] === undefined) return <></>;
-
   return (
     <DivMainWrap>
       <DivContent>
@@ -71,8 +94,8 @@ const DetailMain = props => {
           <Header>
             <DivRstTitle>
               <DivHeaderLeft>
-                <span>{rstData.name}</span>
-                <SpanRate>{rstData.rate}</SpanRate>
+                <span>{data.top.name}</span>
+                <SpanRate>{data.top.star}</SpanRate>
               </DivHeaderLeft>
               <DivWrap>
                 <ButtonReview onClick={goToReview}>
@@ -104,22 +127,22 @@ const DetailMain = props => {
             <SpanInfoTitle>{intro.intro}</SpanInfoTitle>
             <SpanRstIntro>{intro.content}</SpanRstIntro>
           </DivRstIntro>
-          <EatDeal />
+          <EatDeal params={props.params} />
         </SectionIntro>
-        <DetailReview ref={child} />
+        <DetailReview ref={child} params={props.params} />
         <DivMoreReview onClick={() => child.current.moreOnClick()}>
           <SpanMore>더보기</SpanMore>
         </DivMoreReview>
-        <OtherTopList />
-        <RelativeList />
+        <OtherTopList params={props.params} />
+        <RelativeList params={props.params} />
       </DivContent>
       <DivSide>
         <DivMapContainer>
-          <KaKaoMap width={400} height={328} address={data[0].infoContent} />
+          <KaKaoMap width={400} height={328} address={data.result[0].content} />
         </DivMapContainer>
         <DivRightBot>
           <SpanRightTitle>주변 인기 식당</SpanRightTitle>
-          <NearbyList />
+          <NearbyList params={props.params} />
           <SectionTag>
             <SpanTagTitle>이 식당 관련된 태그</SpanTagTitle>
             {tagMapList}
@@ -144,9 +167,10 @@ const DivContent = styled.div`
   width: 800px;
   padding: 0 20px;
   margin: 0 auto;
+  box-sizing: content-box;
   ${Media.small`
     width: 100%
-  `}
+  `};
 `;
 
 const DivSide = styled.div`

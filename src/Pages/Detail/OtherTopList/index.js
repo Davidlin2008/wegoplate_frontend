@@ -1,37 +1,53 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
+import { API_URL } from "../../../config";
 
-const OtherTopList = () => {
+const OtherTopList = props => {
   const [otherList, setOther] = useState([]);
+  const goToTopList = () => {
+    props.history.push("/toplist");
+  };
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/data/other.json")
+  //     .then(res => res.json())
+  //     .then(res => setOther(res.other));
+  // }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/data/other.json")
+    fetch(`${API_URL}/restaurant/${props.params}/related`)
       .then(res => res.json())
-      .then(res => setOther(res.other));
+      .then(res => setOther(res));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const otherMap = otherList.map((el, index) => (
-    <LiTopRst key={index}>
-      <ImgRstImg src={el.img} />
-      <DivRstInfo>
-        <PRstName>
-          {el.name} <SpanRstRate>{el.rate}</SpanRstRate>
-        </PRstName>
-        <PDetailInfo>{el.info}</PDetailInfo>
-      </DivRstInfo>
-    </LiTopRst>
-  ));
+  if (otherList.restaurant_list === undefined) return <></>;
+  const otherMap = otherList.restaurant_list.map((el, index) => {
+    const a = el.grade.toString().slice(0, 3);
+    return (
+      <LiTopRst key={index}>
+        <ImgRstImg src={el.image} />
+        <DivRstInfo onClick={goToTopList}>
+          <PRstName>
+            {el.name} <SpanRstRate>{a}</SpanRstRate>
+          </PRstName>
+          <PDetailInfo>
+            {el.state} / {el.food}
+          </PDetailInfo>
+        </DivRstInfo>
+      </LiTopRst>
+    );
+  });
   return (
     <DivMainContainer>
-      <SpanTopHeader>
-        2020 강북 인기 맛집 TOP 100에 있는 다른 식당
-      </SpanTopHeader>
+      <SpanTopHeader>{otherList.title}</SpanTopHeader>
       <UlRstList>{otherMap}</UlRstList>
     </DivMainContainer>
   );
 };
 
-export default OtherTopList;
+export default withRouter(OtherTopList);
 
 const DivMainContainer = styled.div`
   margin: 0 auto;

@@ -14,23 +14,25 @@ const Review = props => {
   };
 
   const goToDetail = () => {
-    props.history.push("/detail");
+    props.history.push(`/detail/${props.match.params.name}`);
   };
   // localStorage.getItem("login_token");
   const sendtext = () => {
-    fetch("http://10.58.6.147:8000/restaurant/1/review", {
-      method: "POST",
-      headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTkwOH0.qwg9CXS2S__H3sXpmbg6uweD1fta2PFFLV3SCVs-29g"
-      },
-      body: JSON.stringify({
-        restaurant_id: 1,
-        content: text,
-        star: checkRate
-      })
-    });
-    // goToDetail();
+    fetch(
+      `http://10.58.7.97:8000/restaurant/${props.match.params.name}/review`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("login_token")
+        },
+        body: JSON.stringify({
+          restaurant_id: props.match.params.name,
+          content: text,
+          star: checkRate
+        })
+      }
+    );
+    goToDetail();
   };
 
   return (

@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from "react";
 import fetchData from "../../../Utils/Fetch";
 import styled from "styled-components";
+import { API_URL } from "../../../config";
 
-const NearbyList = () => {
+const NearbyList = props => {
   const [nearby, setNearby] = useState([]);
+  // useEffect(() => {
+  //   fetchData("http://localhost:3000/Data/Data.json").then(data => {
+  //     setNearby(data.nearby);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    fetchData("http://localhost:3000/Data/Data.json").then(data => {
-      setNearby(data.nearby);
+    fetchData(`${API_URL}/restaurant/${props.params}/near`).then(data => {
+      setNearby(data.result);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return nearby.map((el, index) => (
     <DivNearByRst key={index}>
-      <ImgNearByRst src={el.url} />
+      <ImgNearByRst src={el.img.images} />
       <DivNearByContent>
         <div>
-          <SpanNearByName>{el.name}</SpanNearByName>
-          <SpanNearByRate>{el.rate}</SpanNearByRate>
+          <SpanNearByName>{el.title}</SpanNearByName>
+          <SpanNearByRate>{el.avg}</SpanNearByRate>
         </div>
         <DivInfoList>
           <SpanInfoLabel>음식 종류:</SpanInfoLabel>
-          <SpanInfoValue>{el.foodList}</SpanInfoValue>
+          <SpanInfoValue>{el.food}</SpanInfoValue>
         </DivInfoList>
         <DivInfoList>
           <SpanInfoLabel>위치:</SpanInfoLabel>
-          <SpanInfoValue>{el.where}</SpanInfoValue>
+          <SpanInfoValue>{el.location}</SpanInfoValue>
         </DivInfoList>
         <DivInfoList>
           <SpanInfoLabel>가격대:</SpanInfoLabel>

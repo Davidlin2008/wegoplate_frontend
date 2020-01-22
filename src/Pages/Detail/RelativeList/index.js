@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 import Media from "../../../Utils/Media";
+import { API_URL } from "../../../config";
 
-const RelativeList = () => {
+const RelativeList = props => {
   const [relativeList, setList] = useState([]);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/data/other.json")
+  //     .then(res => res.json())
+  //     .then(res => setList(res.relative));
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:3000/data/other.json")
+    fetch(`${API_URL}/restaurant/${props.params}/toplist`)
       .then(res => res.json())
-      .then(res => setList(res.relative));
+      .then(res => setList(res.result));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const goToBestList = () => {
+    props.history.push("/bestlist");
+  };
 
   const relativeMap = relativeList.map((el, index) => (
     <LiEachRst key={index}>
-      <DivCardDim />
-      <DivCardImg left={el.img1} right={el.img2} />
+      <DivCardDim onClick={goToBestList} />
+      <DivCardImg left={el.image} />
       <DivTextContainer>
         <PCardTitle>{el.title}</PCardTitle>
-        <PCardDesc>{el.desc}</PCardDesc>
+        <PCardDesc>{el.description}</PCardDesc>
       </DivTextContainer>
     </LiEachRst>
   ));
@@ -29,7 +42,7 @@ const RelativeList = () => {
   );
 };
 
-export default RelativeList;
+export default withRouter(RelativeList);
 
 const SectionContainer = styled.section`
   padding: 33px 0;

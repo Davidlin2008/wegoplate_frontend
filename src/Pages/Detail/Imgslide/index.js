@@ -3,28 +3,36 @@ import fetchData from "../../../Utils/Fetch";
 import styled from "styled-components";
 import ImgModal from "../ImgModal";
 import Media from "../../../Utils/Media";
+import { API_URL } from "../../../config";
 
-const Imgslide = () => {
+const Imgslide = props => {
   const [imglist, setlist] = useState([]);
   const [modalToggle, setToggle] = useState(false);
 
+  // useEffect(() => {
+  //   fetchData("http://localhost:3000/Data/Data.json").then(data => {
+  //     setlist(data.slideImg);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    fetchData("http://localhost:3000/Data/Data.json").then(data => {
-      setlist(data.slideImg);
+    fetchData(`${API_URL}/restaurant/${props.params}/topimage`).then(data => {
+      setlist(data.image);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const imgMap = imglist.map((el, index) => {
     if (index !== imglist.length - 1) {
       return (
         <OwlItemDiv key={index}>
-          <ListImg src={el.link} />
+          <ListImg src={el} />
         </OwlItemDiv>
       );
     } else {
       return (
         <OwlItemDiv key={index}>
-          <ListImg src={el.link} />
+          <ListImg src={el} />
           <ButtonMore>
             <TextBtn onClick={() => setToggle(!modalToggle)}>
               사진 더보기 ->
