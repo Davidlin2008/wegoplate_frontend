@@ -35,7 +35,7 @@ const SignIn = props => {
     if (email.length <= 0 && password.length <= 0) {
       alert("이메일 혹은 비밀번호를 입력해주세요");
     } else {
-      fetch("http://13.125.34.234:8000/user/signin", {
+      fetch("http://10.58.7.97:8000/user/signin", {
         method: "POST",
         body: JSON.stringify({
           email: email,
