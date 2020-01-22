@@ -30,7 +30,6 @@ const H1 = styled.h1`
 `;
 
 export default function SearchList(props) {
-  console.log(props);
   const [searchList, setSearchList] = useState([]);
 
   useEffect(() => {
@@ -41,7 +40,6 @@ export default function SearchList(props) {
         )}`
       );
       const data = await res.json();
-      console.log("하이", data);
       setSearchList(data.restaurant_list);
     };
     fetchSearchList();
@@ -53,7 +51,7 @@ export default function SearchList(props) {
       <H1>맛집 인기 검색 순위</H1>
       <ListContainer className="ListContainer">
         {searchList.map((data, key) => (
-          <SearchListEntry data={data} key={key} />
+          <SearchListEntry data={data} key={key} {...props} />
         ))}
       </ListContainer>
     </Section>

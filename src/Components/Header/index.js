@@ -15,7 +15,6 @@ export default function Header(props) {
   // };
 
   const listA = () => {
-    console.log(searchList);
     if (searchList.length === 0) return <></>;
     else {
       return searchList.result.map((list, key) => (

@@ -55,7 +55,10 @@ const Info = styled.div`
 
 export default function SearchListEntry(props) {
   return (
-    <ListEntryWrapper>
+    <ListEntryWrapper
+      data={props.data}
+      onClick={() => props.history.push(`restaurant/${props.data.id}`)}
+    >
       <Wrapper data={props.data}></Wrapper>
       <InfoWrapper>
         <Name>{props.data.name}</Name>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { orange, size } from "./Styled";
 
 const Section = styled.section`
+  cursor: pointer;
   margin-top: 10px;
   margin-bottom: 20px;
   border-bottom: solid 1px #dbdbdb;
@@ -37,12 +38,8 @@ const H2 = styled.h2`
   color: ${orange};
   font-weight: lighter;
 `;
-// const Button = styled.button`
-//   width: 20px;
-//   display: inline-block;
-// `;
+
 export default function Slide(props) {
-  console.log(props.datas);
   return (
     <Section>
       <H2>{props.title}</H2>

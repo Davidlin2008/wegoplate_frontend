@@ -13,7 +13,7 @@ const FooterContainer = styled.div`
   background-color: #3e3e3e;
 `;
 const P = styled.div`
-  margin: 20px;
+  margin: 50px;
   font-size: 0.875rem;
   line-height: 22px;
   color: #9b9b9b;
@@ -24,7 +24,7 @@ const Logo = styled.img.attrs({
 })`
   width: 150px;
   height: 150px;
-  margin: 20px;
+  margin: 20px 20px 20px 50px;
 `;
 const Sns = styled.div`
   right: 0;

@@ -18,7 +18,7 @@ const Review = props => {
   };
   // localStorage.getItem("login_token");
   const sendtext = () => {
-    fetch("http://10.58.6.147:8000/restaurant/1/review", {
+    fetch("http://13.125.34.234:8000/restaurant/1/review", {
       method: "POST",
       headers: {
         Authorization:
