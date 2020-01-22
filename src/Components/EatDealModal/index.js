@@ -53,7 +53,7 @@ const Modal = ({ isOpen, close, append }) => {
     z-index: 1000;
     opacity: 100;
     width: 50.5%;
-    height: 731px;
+    height: 92.5vh;
     border-top: 1px solid #888888;
     background-color: white;
     top: 61px;
