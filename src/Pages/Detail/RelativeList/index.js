@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 import Media from "../../../Utils/Media";
 
-const RelativeList = () => {
+const RelativeList = props => {
   const [relativeList, setList] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/data/other.json")
@@ -10,9 +11,13 @@ const RelativeList = () => {
       .then(res => setList(res.relative));
   }, []);
 
+  const goToBestList = () => {
+    props.history.push("/bestlist");
+  };
+
   const relativeMap = relativeList.map((el, index) => (
     <LiEachRst key={index}>
-      <DivCardDim />
+      <DivCardDim onClick={goToBestList} />
       <DivCardImg left={el.img1} right={el.img2} />
       <DivTextContainer>
         <PCardTitle>{el.title}</PCardTitle>
@@ -29,7 +34,7 @@ const RelativeList = () => {
   );
 };
 
-export default RelativeList;
+export default withRouter(RelativeList);
 
 const SectionContainer = styled.section`
   padding: 33px 0;

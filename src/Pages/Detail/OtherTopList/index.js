@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
-const OtherTopList = () => {
+const OtherTopList = props => {
   const [otherList, setOther] = useState([]);
+  const goToTopList = () => {
+    props.history.push("/toplist");
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/data/other.json")
@@ -13,7 +17,7 @@ const OtherTopList = () => {
   const otherMap = otherList.map((el, index) => (
     <LiTopRst key={index}>
       <ImgRstImg src={el.img} />
-      <DivRstInfo>
+      <DivRstInfo onClick={goToTopList}>
         <PRstName>
           {el.name} <SpanRstRate>{el.rate}</SpanRstRate>
         </PRstName>
@@ -31,7 +35,7 @@ const OtherTopList = () => {
   );
 };
 
-export default OtherTopList;
+export default withRouter(OtherTopList);
 
 const DivMainContainer = styled.div`
   margin: 0 auto;

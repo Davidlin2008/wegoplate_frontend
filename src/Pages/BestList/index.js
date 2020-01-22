@@ -137,7 +137,7 @@ const LiItem = styled.li`
 `;
 
 const DivEachList = styled.div`
-  width: 580px;
+  width: 550px;
   height: 260px;
   position: relative;
   display: flex;

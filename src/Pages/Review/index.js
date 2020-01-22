@@ -30,7 +30,7 @@ const Review = props => {
         star: checkRate
       })
     });
-    // goToDetail();
+    goToDetail();
   };
 
   return (

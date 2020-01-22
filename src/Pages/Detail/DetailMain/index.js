@@ -54,6 +54,13 @@ const DetailMain = props => {
     props.history.push("/Review");
   };
 
+  const goToTopList = () => {
+    props.history.push("/toplist");
+  };
+  const goToBestList = () => {
+    props.history.push("/bestlist");
+  };
+
   const tagMapList = tagList.map((el, index) => {
     return (
       <DivTagWrapper key={index}>
