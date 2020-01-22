@@ -4,6 +4,7 @@ import DetailMain from "./DetailMain";
 import { toggle } from "../../modules/Toast";
 import ToastContainer from "../../containers/ToastContainer";
 import { useSelector, useDispatch } from "react-redux";
+import Index from "../../Components/Nav";
 
 const Detail = props => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Detail = props => {
   return (
     <div>
       {check && <ToastContainer />}
+      <Index />
       <Imgslide params={props.match.params.name} />
       <DetailMain params={props.match.params.name} />
     </div>

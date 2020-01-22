@@ -42,7 +42,7 @@ export default function SlideEntry(props) {
   return (
     <Wrapper
       data={props.data}
-      onClick={() => props.history.push(`restaurant/toplist/${props.data.id}`)}
+      onClick={() => props.history.push(`toplist/${props.data.id}`)}
     >
       <P>{props.data.title}</P>
       <SmallFont>

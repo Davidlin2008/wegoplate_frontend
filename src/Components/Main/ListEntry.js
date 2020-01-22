@@ -75,7 +75,7 @@ export default function ListEntry(props) {
     <ListEntryWrapper>
       <Wrapper
         data={props.data}
-        onClick={() => props.history.push(`restaurant/${props.data.id}`)}
+        onClick={() => props.history.push(`detail/${props.data.id}`)}
       ></Wrapper>
       <InfoWrapper>
         <Name>{props.data.name}</Name>
