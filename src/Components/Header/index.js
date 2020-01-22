@@ -1,44 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header(props) {
   const [inputValue, setInputValue] = useState("");
-  const [searchList, setSearchList] = useState([
-    "어쩌고asdfasdfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁ",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고",
-    "어쩌고"
-  ]);
+  const [searchList, setSearchList] = useState([]);
 
   // const fetchSearchList = async () => {
-  //   const res = await fetch("");
+  //   const res = await fetch(
+  //     `http://10.58.4.10:8001/restaurant/keyword?text=${inputValue}`
+  //   );
   //   const data = await res.json();
-  //   setSearchList(data.어쩌고);
+  //   setSearchList(data);
   // };
 
-  const onChangeInputValue = e => {
-    // fetchSearchList();
-    setInputValue(e.target.value);
-    // fetch("http://:8000", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     inputValue: inputValue
-    //   })
-    // });
-    // console.log("input값 fetch로 보내는 중");
+  const listA = () => {
+    if (searchList.length === 0) return <></>;
+    else {
+      return searchList.result.map((list, key) => (
+        <li className="keyword_list" key={key}>
+          {list}
+        </li>
+      ));
+    }
   };
+  const onChangeInputValue = e => {
+    setInputValue(e.target.value);
+    console.log("input값 fetch로 보내는 중");
+  };
+
+  useEffect(() => {
+    const fetchSearchList = async () => {
+      const res = await fetch(
+        `http://13.125.34.234:8000/restaurant/keyword?text=${inputValue}`
+      );
+      const data = await res.json();
+      setSearchList(data);
+    };
+    fetchSearchList();
+  }, [inputValue]);
+
+  // const onChangeInputValue = e => {
+  //   setInputValue(e.target.value);
+  //   console.log("input값 fetch로 보내는 중");
+  // };
 
   return (
     <header className="header">
@@ -58,23 +63,17 @@ export default function Header() {
               <></>
             ) : (
               <div className="keyword_box">
-                <ul className="keyword_lists">
-                  {searchList.map((list, key) => (
-                    <li className="keyword_list" key={key}>
-                      {list}
-                    </li>
-                  ))}
-                </ul>
+                <ul className="keyword_lists">{listA()}</ul>
               </div>
             )}
             <input
               className="search_button"
               value="검색"
               type="submit"
-              onClick={onChangeInputValue}
+              onClick={() => props.history.push(`/search?=${inputValue}`)}
             />
           </div>
-          <Link to="/eat_deal">
+          <Link to="/eatdeal">
             <img
               className="eat_deal_img"
               src={require("../../Images/eat.png")}

@@ -17,7 +17,7 @@ $orange: #f27104;
     span {
       margin-left: 40px;
       display: block;
-      background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-logo-horizontal.svg");
+      background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-logo-horizontal.svg');
       background-position: 0px 0px;
       width: 100px;
       height: 33px;
@@ -45,7 +45,7 @@ $orange: #f27104;
         text-decoration: none;
         text-align: center;
         height: 100%;
-        color: #888888;
+        color: #c0c0c0;
         cursor: pointer;
         font-size: 16px;
         &:link,
@@ -67,7 +67,7 @@ $orange: #f27104;
   .human_icon {
     margin-right: 40px;
     display: block;
-    background-image: url("../../Images/main-sprite.png");
+    background-image: url('../../Images/main-sprite.png');
     background-position: -82px -919px;
     width: 34px;
     height: 34px;
@@ -86,7 +86,7 @@ $orange: #f27104;
       span {
         width: 20px;
         height: 34px;
-        background-image: url("../../Images/main-mobile.png");
+        background-image: url('../../Images/main-mobile.png');
         background-position: -491px -56px;
         background-size: 635px 609px;
       }
@@ -117,7 +117,7 @@ $orange: #f27104;
             margin-top: 30px;
             width: 19px;
             height: 35px;
-            background-image: url("../../Images/mobile-logo.png");
+            background-image: url('../../Images/mobile-logo.png');
             background-position: -800px 0;
             background-size: 920px 160px;
           }
@@ -149,7 +149,7 @@ $orange: #f27104;
     }
 
     .human_icon {
-      background-image: url("../../Images/main-sprite.png");
+      background-image: url('../../Images/main-sprite.png');
       background-position: -82px -919px;
       display: block;
       width: 34px;

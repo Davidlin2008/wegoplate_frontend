@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 const FooterContainer = styled.div`
-  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 400px;
+  height: 475px;
   color: white;
   background-color: #3e3e3e;
 `;
 const P = styled.div`
-  margin: 20px;
+  margin: 50px;
   font-size: 0.875rem;
   line-height: 22px;
   color: #9b9b9b;
@@ -21,13 +24,12 @@ const Logo = styled.img.attrs({
 })`
   width: 150px;
   height: 150px;
-  margin: 20px;
+  margin: 20px 20px 20px 50px;
 `;
 const Sns = styled.div`
-  position: absolute;
   right: 0;
-  top: 20px;
-  margin: 40px;
+  bottom: 250px;
+  margin: 70px;
   display: flex;
   justify-content: space-between;
   width: 200px;
@@ -58,12 +60,14 @@ const Insta = styled.span`
 export default function Footer(props) {
   return (
     <FooterContainer>
-      <Logo />
-      <Sns>
-        <Blog />
-        <Facebook />
-        <Insta />
-      </Sns>
+      <Wrapper>
+        <Logo />
+        <Sns>
+          <Blog />
+          <Facebook />
+          <Insta />
+        </Sns>
+      </Wrapper>
       <P>
         ㈜ 망고플레이트
         <br />

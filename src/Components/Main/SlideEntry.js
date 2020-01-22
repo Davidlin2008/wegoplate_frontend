@@ -40,7 +40,10 @@ const P = styled.p`
 
 export default function SlideEntry(props) {
   return (
-    <Wrapper data={props.data}>
+    <Wrapper
+      data={props.data}
+      onClick={() => props.history.push(`restaurant/toplist/${props.data.id}`)}
+    >
       <P>{props.data.title}</P>
       <SmallFont>
         <P>{props.data.description}</P>

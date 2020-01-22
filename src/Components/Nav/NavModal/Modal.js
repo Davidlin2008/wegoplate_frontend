@@ -25,6 +25,7 @@ const Modal = ({ isShowing, hide, isLoggedin }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               {isLoggedin ? (
                 <Link to="/" className="login_wrapper">
                   <span className="login_button">로그아웃</span>

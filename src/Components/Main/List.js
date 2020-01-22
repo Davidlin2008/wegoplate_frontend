@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { orange, size } from "./Styled";
 
 const Section = styled.section`
+  cursor: pointer;
   border-bottom: solid 1px #dbdbdb;
   margin-top: 10px;
   @media only screen and (min-width: ${size.tablet}) {
@@ -41,13 +42,12 @@ const H2 = styled.h2`
 `;
 
 export default function List(props) {
-  console.log(props.datas);
   return (
     <Section>
       <H2>{props.title}</H2>
       <ListContainer className="ListContainer">
         {props.datas.map((data, key) => (
-          <ListEntry data={data} key={key} />
+          <ListEntry data={data} key={key} {...props} />
         ))}
       </ListContainer>
     </Section>
