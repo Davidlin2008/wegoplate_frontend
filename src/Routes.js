@@ -18,12 +18,15 @@ class Routes extends React.Component {
           <Route exact path="/" component={Main} />
           <Route path="/signin" component={SignIn} />
           <Route exact path="/Eatdetail" component={EatDealDetail} />
+          <Route exact path="/detail/:name" component={Detail} />
           <Route exact path="/detail" component={Detail} />
           <Route path="/eatdeal" component={EatDealMain} />
           <Route path="/signup" component={SignUp} />
-          <Route exact path="/detail" component={Detail} />
+          <Route exact path="/review/:name" component={Review} />
           <Route exact path="/review" component={Review} />
+          <Route exact path="/toplist/:name" component={TopList} />
           <Route exact path="/toplist" component={TopList} />
+          <Route exact path="/bestlist:name" component={BestList} />
           <Route exact path="/bestlist" component={BestList} />
         </Switch>
       </Router>
