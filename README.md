@@ -4,7 +4,7 @@
 
 ## video
 
-[[weGoplate]](https://youtu.be/R78aCEbAT-o)
+[데모 ](https://youtu.be/R78aCEbAT-o)
 
 ## 기술 스택
 
