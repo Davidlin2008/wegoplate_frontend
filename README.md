@@ -2,6 +2,10 @@
 
 지역별 평점을 기준으로 맛집을 소개해주는 서비스인 망고플레이트 클론 프로젝트
 
+## video
+
+[![weGoplate](./screenshot.png)](https://youtu.be/R78aCEbAT-o)
+
 ## 기술 스택
 
 - JavaScript
