@@ -1,6 +1,6 @@
 # wegoplate 2020.01.06 - 01.22
 
-지역별 평점을 기준으로 맛집을 소개해주는 서비스인 망고플레이트 클론 프로젝트
+지역별 평점을 기준으로 맛집을 소개해주는 서비스인 망고플레이트 클론 프로젝트.
 
 ## video
 
@@ -40,5 +40,6 @@
 `npm react-kakao-login react-redux redux styled-components node-sass query-string`
 
 ### 그 외
- `npm start`로 [http://localhost:3000](http://localhost:3000) 에서 
+
+`npm start`로 [http://localhost:3000](http://localhost:3000) 에서
 확인 가능
